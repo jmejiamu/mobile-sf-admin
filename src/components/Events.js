@@ -23,10 +23,19 @@ const Events = () => {
                 eventData.map(event => {
                     return (
                         <>
-                            <h4>{event.description}</h4>
-                            <p>Description: {event.notes}</p>
-                            <p>Location{event.location}</p>
-                            <p>Start Date: {event.start_date}</p>
+
+                            <div className="card mb-5" >
+
+                                <div className="card-body text-left" >
+                                    <h5 className="card-title">{event.description}</h5>
+                                    <p className="card-text ">{event.notes}</p>
+                                    <p><strong>Location:</strong> {event.location}</p>
+                                    <p><strong>From: </strong> {event.duration}</p>
+                                    <p><strong>Start Date:</strong> {event.start_date}</p>
+                                    <p> <strong>End Date:</strong> {event.end_date}</p>
+                                    <Link to="/events" className="btn btn-secondary">Edit</Link>
+                                </div>
+                            </div>
 
                         </>
                     )
