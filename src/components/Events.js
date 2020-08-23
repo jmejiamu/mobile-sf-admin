@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import EditEvent from './EditEvents';
+import AddEvents from './AddEvents';
 
 const Events = (props) => {
     const [eventData, setEventsData] = useState([]);
@@ -31,11 +32,12 @@ const Events = (props) => {
     }, [])
     return (
         <div>
-            <h1>Events</h1> 
-            <button
+            <h1 className="events-section">Events</h1> 
+            {/* <button
                 type="button"
                 className="btn btn btn-danger mb-4  mt-5 d-flex justify-content-end"
-            >Add event</button>
+            >Add event</button> */}
+            <AddEvents/>
             {eventData.length === 0 ? <h1 className="text-center mt-5 mb-5">There is not events yet!{'😌'}</h1> : (
                 eventData.map(event => {
                     return (
