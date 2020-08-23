@@ -62,7 +62,7 @@ const Events = (props) => {
                     )
                 })
             )}
-            <Link to="/" className="btn btn-secondary">Menu</Link>
+           
         </div>
     )
 }
