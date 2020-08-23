@@ -7,7 +7,7 @@ const Events = (props) => {
 
     const deleteEvents = async (id) => {
         try {
-            const deleteData = await fetch(`http://157.245.184.xxx:8080/deleteEvent/${id}`, {
+            const deleteData = await fetch(`http://157.245.184.202:8080/deleteEvent/${id}`, {
                 method: 'DELETE'
             })
             setEventsData(eventData.filter(event => event.id !== id))
@@ -18,7 +18,7 @@ const Events = (props) => {
 
     const getEvents = async () => {
         try {
-            const response = await fetch('http://157.245.184.xxx:8080/calendar')
+            const response = await fetch('http://157.245.184.202:8080/calendar')
             const jsonData = await response.json()
 
             setEventsData(jsonData);
@@ -31,10 +31,11 @@ const Events = (props) => {
     }, [])
     return (
         <div>
-            This is an event page <button
+            <h1>Events</h1> 
+            <button
                 type="button"
-                className="btn btn btn-danger"
-            >Add new event</button>
+                className="btn btn btn-danger mb-4  mt-5 d-flex justify-content-end"
+            >Add event</button>
             {eventData.length === 0 ? <h1 className="text-center mt-5 mb-5">There is not events yet!{'😌'}</h1> : (
                 eventData.map(event => {
                     return (

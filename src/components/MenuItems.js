@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const MenuItems = () => {
     return (
         <>
-            <h1>Dashborad </h1>
+            <h1 className="dashboard">Dashboard </h1>
             <div className="row  justify-content-between">
 
 

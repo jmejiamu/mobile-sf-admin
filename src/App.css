@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  
 }
 
 .App-logo {
@@ -21,4 +22,11 @@
 
 .App-link {
   color: #61dafb;
+}
+.dashboard{
+  margin-top: 100px;
+}
+.card{
+  background-color: #424242;
+  color: #FFFFFF;
 }
