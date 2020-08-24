@@ -39,7 +39,7 @@ const EditEvent = (props) => {
                 className="btn btn-danger "
                 data-toggle="modal"
                 data-target={`#id${props.event.id}`}>
-                Edit Text</button>
+                Edit</button>
 
             <div className="modal" id={`id${props.event.id}`}>
                 <div className="modal-dialog">

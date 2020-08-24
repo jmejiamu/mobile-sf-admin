@@ -13,16 +13,17 @@ const AddEvents = (props) => {
         // e.preventDefault();
         try {
             const body = {
-                description: descriptionData,
-                notes: notesData,
-                location: locationData,
-                duration: durationData,
                 start_date: startData,
                 end_date: endData,
+                description: descriptionData,
+                duration: durationData,
+                notes: notesData,
+                location: locationData,
+                
             }
 
             const response = await fetch(`http://157.245.184.202:8080/addEvent`, {
-                method: 'PUT',
+                method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(body)
             })
@@ -47,28 +48,30 @@ const AddEvents = (props) => {
 
 
                         <div className="modal-header">
-                            <h4 className="modal-title">Add Event</h4>
+                            <h4 className="modal-title modal-style">Add Event</h4>
                             <button type="button" className="close" data-dismiss="modal">&times;</button>
                         </div>
 
 
-                        <div className="modal-body">
-                            <label>Title</label>
+                        <div className="modal-body modal-style">
+                            <label></label>
                             <input
                                 type="text"
                                 className="form-control"
                                 placeholder="Title"
                                 value={descriptionData}
                                 onChange={e => setDescriptionData(e.target.value)} />
-                            <label>Description</label>
+                            <label></label>
                             <textarea
                                 type="text"
                                 className="form-control"
+                                placeholder="Description"
                                 value={notesData}
                                 onChange={e => setNotesData(e.target.value)} ></textarea>
-                            <label>Location</label>
+                            <label></label>
                             <textarea
                                 type="text"
+                                placeholder="Location"
                                 className="form-control"
                                 value={locationData}
                                 onChange={e => setLocationData(e.target.value)}></textarea>
@@ -76,18 +79,21 @@ const AddEvents = (props) => {
                             <label>From</label>
                             <input
                                 type="text"
+                                placeholder="hh-mm - hh-mm"
                                 className="form-control"
                                 value={durationData}
                                 onChange={e => setDurationData(e.target.value)} />
-                            <label>Start</label>
+                            <label>Start Date</label>
                             <input
                                 type="text"
                                 className="form-control"
+                                placeholder="yyyy-mm-dd"
                                 value={startData}
                                 onChange={e => setStartData(e.target.value)} />
-                            <label>End</label>
+                            <label>End Date </label>
                             <input
                                 type="text"
+                                placeholder="yyyy-mm-dd"
                                 className="form-control"
                                 value={endData}
                                 onChange={e => setEndData(e.target.value)} />
