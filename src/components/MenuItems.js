@@ -20,9 +20,9 @@ const MenuItems = () => {
                 <div className="card mb-5" >
                     {/* <img class="card-img-top" src="..." alt="Card image cap"> */}
                     <div className="card-body" style={{ width: '400px' }}>
-                        <h5 className="card-title">Here</h5>
-                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <Link to="#" className="btn btn-danger">Go to events</Link>
+                        <h5 className="card-title">Assistance </h5>
+                        <p className="card-text">Description coming...</p>
+                        <Link to="/assistance" className="btn btn-danger">Go to complaints</Link>
                     </div>
                 </div>
 

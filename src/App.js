@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import MenuItems from './components/MenuItems';
 import Events from './components/Events';
+import Assistance  from './components/Assisstance/Assistance';
 // import PageNotFound from './components/PageNotFound';
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
         <Switch>
           <Route exact path='/' component={MenuItems} />
           <Route exact path='/events' component={Events} />
+          <Route exact path='/assistance' component={Assistance} />
           {/* <Route exact path='/events/:id' component={PageNotFound} /> */}
         </Switch>
 
