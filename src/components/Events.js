@@ -27,6 +27,7 @@ const Events = (props) => {
             console.error(error);
         }
     };
+
     useEffect(() => {
         getEvents();
     }, [])
