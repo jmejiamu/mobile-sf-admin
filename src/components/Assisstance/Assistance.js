@@ -6,6 +6,17 @@ import React,{useState, useEffect}from 'react';
 const Assistance = () => {
     const [assistanceData, setAssistanceData] = useState([]);
 
+    const deleteAssistance = async (id) => {
+        try {
+            const deleteData = await fetch(`http://157.245.184.202:8080/deleteAssistance/${id}`,{
+                method: 'DELETE'
+            })
+            setAssistanceData(assistanceData.filter(assistanceToDelete => assistanceToDelete.id !== id))
+        } catch (error) {
+            console.error(error.message);
+        }
+    }
+
     const getData = async () => {
 
         try {
@@ -36,6 +47,12 @@ const Assistance = () => {
                                 <h5 className="card-title" > Contact Information</h5>
                                 <p className="card-text" ><strong>Phone:</strong> {assistance.phone}</p>
                                 <p className="card-text" ><strong>Email:</strong> {assistance.email}</p>
+                                <button
+                                 type="button"
+                                 className="card-link btn btn btn-danger"
+                                 onClick={()=> deleteAssistance(assistance.id)}
+                                >DELETE</button>
+
                             </div>
 
                         </div>
