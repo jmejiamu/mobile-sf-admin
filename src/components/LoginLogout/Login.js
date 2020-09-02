@@ -18,6 +18,7 @@ const Login = () => {
             // value={startData}
             // onChange={e => setStartData(e.target.value)} 
             />
+            <button type="button" className="btn btn-danger btn-sm mt-5">Log In</button>
 
         </div>
     )
