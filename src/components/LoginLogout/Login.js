@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
+
 import axios from 'axios';
+import MenuItems from './../MenuItems';
 
-const Login = () => {
-
+const Login = (props) => {
+    // console.log(props);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -11,10 +13,15 @@ const Login = () => {
 
         axios.post('http://localhost:3001/signin', { email, password })
             .then(response => {
+                console.log(response);
                 if (response.data.id) {
-                    window.location = '/menu'
+                    props.history.push('/menu')
                 }
+            }).catch((error) => {
+                alert('wrong credential')
+                // console.log(response)
             })
+
 
         // window.location = '/menu'
     }

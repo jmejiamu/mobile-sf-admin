@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const MenuItems = () => {
+const MenuItems = (props) => {
+    console.log(props);
     return (
         <>
             <h1 className="dashboard">Dashboard </h1>
