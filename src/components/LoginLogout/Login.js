@@ -41,7 +41,7 @@ const Login = (props) => {
 
             const data = await response.json()
             console.log(data);
-            if (data.id) {
+            if (data.user.id) {
                 props.history.push('/menu')
             }
 

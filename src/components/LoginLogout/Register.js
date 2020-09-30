@@ -37,11 +37,13 @@ const Register = () => {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
                 },
-                credentials: 'same-origin',
+                // credentials: 'same-origin',
                 body: JSON.stringify(body)
             })
-            const data = await response.headers.get('jwt')
+            const data = await response.json()
             console.log(data);
+            // document.cookie = `token=${data.token}`
+            localStorage.setItem('jwt', data.token)
         } catch (error) {
             console.error(error);
         }
