@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 
-const Register = () => {
+const Register = (props) => {
 
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    const submitUserData = async () => {
-
+    const submitUserData = async (e) => {
+        e.preventDefault();
         // const body = {
         //     name: name,
         //     email: email,
@@ -34,18 +34,17 @@ const Register = () => {
             const response = await fetch('http://localhost:3001/register', {
                 method: 'POST',
                 headers: {
-                    'Accept': 'application/json',
                     'Content-Type': 'application/json',
                 },
-                // credentials: 'same-origin',
                 body: JSON.stringify(body)
             })
             const data = await response.json()
             console.log(data);
             // document.cookie = `token=${data.token}`
             localStorage.setItem('jwt', data.token)
+            props.setAuth(true)
         } catch (error) {
-            console.error(error);
+            console.error(error.message);
         }
 
 
@@ -56,38 +55,40 @@ const Register = () => {
     return (
         <div>
             <h1 className="events-section">Register</h1>
+            <form onSubmit={submitUserData}>
 
-            <label className="text-white">User Name</label>
-            <input
-                type="text"
-                placeholder="User name"
-                className="form-control"
-                value={name}
-                onChange={e => setName(e.target.value)}
-            />
+                <input
+                    type="text"
+                    name="name"
+                    placeholder="User name"
+                    className="form-control my-3"
+                    value={name}
+                    onChange={e => setName(e.target.value)}
+                />
 
-            <label className="text-white">Email</label>
-            <input
-                type="text"
-                placeholder="Email"
-                className="form-control"
-                value={email}
-                onChange={e => setEmail(e.target.value)}
-            />
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    className="form-control my-3 "
+                    value={email}
+                    onChange={e => setEmail(e.target.value)}
+                />
 
-            <label className="text-white">Password</label>
-            <input
-                type="text"
-                placeholder="Password"
-                className="form-control"
-                value={password}
-                onChange={e => setPassword(e.target.value)}
-            />
-            <button
-                type="button"
-                className="btn btn-danger btn-sm mt-5"
-                onClick={submitUserData}
-            >Register</button>
+                <input
+                    type="text"
+                    placeholder="Password"
+                    name="password"
+                    className="form-control my-3 "
+                    value={password}
+                    onChange={e => setPassword(e.target.value)}
+                />
+                <button
+                    type="button"
+                    className="btn btn-danger btn-sm mt-5"
+                    onClick={submitUserData}
+                >Register</button>
+            </form>
         </div>
     );
 };

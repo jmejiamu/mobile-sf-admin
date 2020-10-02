@@ -41,9 +41,9 @@ const Login = (props) => {
 
             const data = await response.json()
             console.log(data);
-            if (data.user.id) {
-                props.history.push('/menu')
-            }
+            // if (data.user.id) {
+            //     props.history.push('/menu')
+            // }
 
         } catch (error) {
             console.error(error);
@@ -53,32 +53,35 @@ const Login = (props) => {
     return (
         <div>
             <h1 className="events-section">Log In</h1>
-            <label className="text-white">User Name</label>
-            <input
-                type="text"
-                placeholder="User name"
-                className="form-control"
-                value={email}
-                onChange={e => setEmail(e.target.value)}
-            />
-            <label className="text-white">Password</label>
-            <input
-                type="password"
-                placeholder="Password"
-                className="form-control"
-                value={password}
-                onChange={e => setPassword(e.target.value)}
-            />
-            <button
-                type="button"
-                className="btn btn-danger btn-sm mt-5"
-                onClick={submitUserData}>Log In</button>
+            <form onSubmit={submitUserData}>
 
-            <button
-                type="button"
-                className="btn btn-danger btn-sm mt-5"
-                onClick={goToRegister}
-            >Register</button>
+                <input
+                    type="text"
+                    placeholder="User name"
+                    className="form-control my-3"
+                    value={email}
+                    onChange={e => setEmail(e.target.value)}
+                />
+                <input
+                    type="password"
+                    placeholder="Password"
+                    className="form-control"
+                    value={password}
+                    onChange={e => setPassword(e.target.value)}
+                />
+                <button
+                    type="button"
+                    className="btn btn-danger btn-sm my-3"
+                    onClick={submitUserData}
+                >
+                    Log In</button>
+
+                <button
+                    type="button"
+                    className="btn btn-danger btn-sm my-3"
+                    onClick={goToRegister}
+                >Register</button>
+            </form>
 
         </div>
     )

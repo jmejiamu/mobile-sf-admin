@@ -14,6 +14,12 @@ const App = () => {
 
   const [isAuthenticated, setAuthenticated] = useState(false);
 
+  // this will taggle false to true  or true to false
+  const setAuth = (boolean) => {
+    setAuthenticated(boolean);
+  }
+
+
   return (
     <BrowserRouter>
 
@@ -28,11 +34,13 @@ const App = () => {
           <Route exact path='/assistance' component={Assistance} /> */}
           {/* <Route exact path='/events/:id' component={PageNotFound} /> */}
           {/* '/'this would be the login  */}
-          <Route exact={true} path='/' render={props => !isAuthenticated ? <Login {...props} /> : <Redirect to="/menu" />} />
-          <Route exact path='/menu' render={props => isAuthenticated ? < MenuItems {...props} /> : <Redirect to="/" />} />
-          <Route exact path='/events' render={props => isAuthenticated ? <Events {...props} /> : <Redirect to="/" />} />
-          <Route exact path='/register' render={props => !isAuthenticated ? <Register {...props} /> : <Redirect to="/" />} />
-          <Route exact path='/assistance' render={props => isAuthenticated ? <Assistance {...props} /> : <Redirect to="/" />} />
+          <Route exact={true}
+            path='/'
+            render={props => !isAuthenticated ? <Login {...props} setAuth={setAuth} /> : <Redirect to="/menu" />} />
+          <Route exact path='/menu' render={props => isAuthenticated ? < MenuItems {...props} setAuth={setAuth} /> : <Redirect to="/" />} />
+          <Route exact path='/events' render={props => isAuthenticated ? <Events {...props} setAuth={setAuth} /> : <Redirect to="/" />} />
+          <Route exact path='/register' render={props => !isAuthenticated ? <Register {...props} setAuth={setAuth} /> : <Redirect to="/" />} />
+          <Route exact path='/assistance' render={props => isAuthenticated ? <Assistance {...props} setAuth={setAuth} /> : <Redirect to="/" />} />
         </Switch>
 
       </div>
