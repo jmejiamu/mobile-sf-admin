@@ -1,11 +1,34 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const MenuItems = (props) => {
     console.log(props);
+    const [name, setName] = useState("");
+
+    const getName = async () => {
+        try {
+            const response = await fetch('http://localhost:3001/dashboard', {
+                method: 'GET',
+                headers: { token: localStorage.jwt }
+            });
+            const data = await response.json()
+
+            setName(data.name)
+
+        } catch (error) {
+            console.error(error.message);
+        }
+    }
+
+
+    useEffect(() => {
+        getName();
+    }, [])
+
     return (
         <>
             <h1 className="dashboard">Dashboard </h1>
+            <h2>Welcome {name}</h2>
             <div className="row  justify-content-between">
 
 

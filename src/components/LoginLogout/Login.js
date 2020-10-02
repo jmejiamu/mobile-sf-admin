@@ -1,7 +1,7 @@
 import React, { useState, } from 'react';
 
 
-import axios from 'axios';
+// import axios from 'axios';
 import MenuItems from './../MenuItems';
 
 const Login = (props) => {
@@ -15,6 +15,7 @@ const Login = (props) => {
 
 
     const submitUserData = async (e) => {
+        e.preventDefault()
 
         // axios.post('http://localhost:3001/signin', { email, password })
         //     .then(response => {
@@ -41,6 +42,9 @@ const Login = (props) => {
 
             const data = await response.json()
             console.log(data);
+            localStorage.setItem('jwt', data.token)
+            props.setAuth(true);
+
             // if (data.user.id) {
             //     props.history.push('/menu')
             // }
