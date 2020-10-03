@@ -21,14 +21,24 @@ const MenuItems = (props) => {
     }
 
 
+    const logout = (e) => {
+        e.preventDefault()
+        localStorage.removeItem('jwt');
+        props.setAuth(false)
+    }
     useEffect(() => {
         getName();
     }, [])
 
+
+
     return (
         <>
             <h1 className="dashboard">Dashboard </h1>
-            <h2>Welcome {name}</h2>
+            <h2 className="text-white" >Welcome {name}</h2>
+            <button className="btn btn-primary"
+                onClick={e => logout(e)}
+            >LOGOUT</button>
             <div className="row  justify-content-between">
 
 

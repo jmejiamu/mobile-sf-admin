@@ -41,7 +41,7 @@ const Register = (props) => {
             const data = await response.json()
             console.log(data);
             // document.cookie = `token=${data.token}`
-            localStorage.setItem('token', data.token)
+            localStorage.setItem('jwt', data.token)
             props.setAuth(true)
         } catch (error) {
             console.error(error.message);
