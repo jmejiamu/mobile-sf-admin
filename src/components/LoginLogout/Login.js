@@ -1,8 +1,8 @@
 import React, { useState, } from 'react';
 
-
 // import axios from 'axios';
 import MenuItems from './../MenuItems';
+import { toast } from 'react-toastify';
 
 const Login = (props) => {
     // console.log(props);
@@ -42,8 +42,14 @@ const Login = (props) => {
 
             const data = await response.json()
             console.log(data);
-            localStorage.setItem('jwt', data.token)
-            props.setAuth(true);
+            if (data.token) {
+                localStorage.setItem('jwt', data.token)
+                props.setAuth(true);
+                toast.success("login succesfully!")
+            } else {
+                props.setAuth(false)
+                toast.error(data)
+            }
 
             // if (data.user.id) {
             //     props.history.push('/menu')

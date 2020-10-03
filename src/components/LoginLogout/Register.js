@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import { toast } from 'react-toastify';
 
 
 const Register = (props) => {
@@ -40,9 +40,15 @@ const Register = (props) => {
             })
             const data = await response.json()
             console.log(data);
-            // document.cookie = `token=${data.token}`
-            localStorage.setItem('jwt', data.token)
-            props.setAuth(true)
+            if (data.token) {
+                // document.cookie = `token=${data.token}`
+                localStorage.setItem('jwt', data.token)
+                props.setAuth(true)
+                toast.success("Register Successfully!")
+            } else {
+                props.setAuth(false)
+                toast.error(data)
+            }
         } catch (error) {
             console.error(error.message);
         }

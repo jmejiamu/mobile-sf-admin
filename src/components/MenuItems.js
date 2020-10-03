@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const MenuItems = (props) => {
     console.log(props);
@@ -25,6 +26,7 @@ const MenuItems = (props) => {
         e.preventDefault()
         localStorage.removeItem('jwt');
         props.setAuth(false)
+        toast.success("Logged out successfully!")
     }
     useEffect(() => {
         getName();
