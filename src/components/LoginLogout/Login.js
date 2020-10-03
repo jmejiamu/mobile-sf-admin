@@ -3,6 +3,7 @@ import React, { useState, } from 'react';
 // import axios from 'axios';
 import MenuItems from './../MenuItems';
 import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 
 const Login = (props) => {
     // console.log(props);
@@ -51,49 +52,57 @@ const Login = (props) => {
                 toast.error(data)
             }
 
-            // if (data.user.id) {
-            //     props.history.push('/menu')
-            // }
-
         } catch (error) {
             console.error(error);
         }
     }
 
     return (
-        <div>
-            <h1 className="events-section">Log In</h1>
-            <form onSubmit={submitUserData}>
+        <div className="login-form" >
 
-                <input
-                    type="text"
-                    placeholder="User name"
-                    className="form-control my-3"
-                    value={email}
-                    onChange={e => setEmail(e.target.value)}
-                />
-                <input
-                    type="password"
-                    placeholder="Password"
-                    className="form-control"
-                    value={password}
-                    onChange={e => setPassword(e.target.value)}
-                />
-                <button
-                    type="button"
-                    className="btn btn-danger btn-sm my-3"
-                    onClick={submitUserData}
-                >
-                    Log In</button>
+            <div className="card-body px-lg-5 pt-0" >
 
-                <button
-                    type="button"
-                    className="btn btn-danger btn-sm my-3"
-                    onClick={goToRegister}
-                >Register</button>
-            </form>
+                <form onSubmit={submitUserData}  >
 
-        </div>
+                    <h2 className="events-section">
+                        Login
+                    </h2>
+                    <input
+                        type="text"
+                        placeholder="E-mail"
+                        className="form-control my-3"
+                        required="required"
+                        value={email}
+                        onChange={e => setEmail(e.target.value)}
+                    />
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        className="form-control"
+                        value={password}
+                        onChange={e => setPassword(e.target.value)}
+                    />
+                    <button
+                        type="button"
+                        className="btn btn-danger btn-lg my-3 btn-block"
+                        onClick={submitUserData}
+                    >
+                        Log In</button>
+
+                    {/* <button
+                        type="button"
+                        className="btn btn-danger btn-sm my-3"
+                        onClick={goToRegister}
+                    >Register</button> */}
+                </form>
+                <p className="text-center small text-white" >
+                    Dont have an account
+                <Link to="/register" className="c-style"> Sign up here!</Link>
+                </p>
+            </div>
+
+
+        </div >
     )
 }
 
