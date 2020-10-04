@@ -47,7 +47,7 @@ const App = () => {
 
             <div className="App container">
 
-                <NavBar />
+                {/* <NavBar /> */}
                 <Switch>
                     {/* <Route exact={true} path='/' component={Login} />
           <Route exact path='/menu' component={MenuItems} />

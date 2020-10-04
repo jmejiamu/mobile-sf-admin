@@ -19,7 +19,9 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
+.title-sf{
+  color: #fff;
+}
 .App-link {
   color: #61dafb;
 }
@@ -54,7 +56,6 @@
   border-radius: 2px;
 }
 .login-form{
-  
   width: 450px;
   margin: 30px auto;
   text-align: center;
@@ -64,7 +65,7 @@
   margin: 10px 50px 25px;
 }
 .login-form form { 
-  margin-top: 150px;
+  margin-top: 50px;
   color: #7a7a7a;
   border-radius: 3px;
   margin-bottom: 15px;

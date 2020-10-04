@@ -46,7 +46,7 @@ const Login = (props) => {
             if (data.token) {
                 localStorage.setItem('jwt', data.token)
                 props.setAuth(true);
-                toast.success("login succesfully!")
+                toast.success(" 🧑‍🚀 login succesfully!")
             } else {
                 props.setAuth(false)
                 toast.error(data)
@@ -59,6 +59,7 @@ const Login = (props) => {
 
     return (
         <div className="login-form" >
+            <h1 className="title-sf" >SF Living Wage Coalition Admin </h1>
 
             <div className="card-body px-lg-5 pt-0" >
 
