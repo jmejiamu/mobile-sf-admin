@@ -23,7 +23,7 @@ const NavBar = (props) => {
                 </a>
 
                 <ul className="navbar-nav " >
-                    <li className="nav-item"><Link className="nav-link " to="/">{props.name}</Link></li>
+                    <li className="nav-item"><Link className="nav-link " to="/">{` 🧑🏻‍💻 ${props.name}`}</Link></li>
                     <Link to="/menu" className="btn btn-outline-danger ">Menu</Link>
                     <button
                         type="button"
