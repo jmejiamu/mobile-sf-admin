@@ -15,19 +15,19 @@ const NavBar = (props) => {
 
 
     return (
-        <div>
+        <div className="container">
             <nav className="navbar navbar-expand-lg  justify-content-between navbar-dark bg-dark fixed-top" >
-                <a className="navbar text-white " href="/">
+                <a className="navbar text-white ml-sm-4" href="/">
                     {/* <img src={logo} width="35" height="35" alt="logo" /> */}
                     SF Living Wage Coalition
                 </a>
 
                 <ul className="navbar-nav " >
-                    <li className="nav-item"><Link className="nav-link " to="/">{` 🧑🏻‍💻 ${props.name}`}</Link></li>
-                    <Link to="/menu" className="btn btn-outline-danger ">Menu</Link>
+                    <li className="nav-item"><Link className="nav-link text-white mr-sm-5" to="/">{` 🧑🏻‍💻 ${props.name}`}</Link></li>
+                    <Link to="/menu" className="btn btn-outline-danger mr-sm-4 ">Menu</Link>
                     <button
                         type="button"
-                        className="btn btn-danger btn-sm"
+                        className="btn btn-danger btn-sm mr-sm-5"
                         onClick={e => logout(e)}
                     >Log out</button>
                 </ul>
