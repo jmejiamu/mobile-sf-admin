@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import NavBar from './NavBar';
 
 const MenuItems = (props) => {
     console.log(props);
@@ -22,12 +23,12 @@ const MenuItems = (props) => {
     }
 
 
-    const logout = (e) => {
-        e.preventDefault()
-        localStorage.removeItem('jwt');
-        props.setAuth(false)
-        toast.success("Logged out successfully!")
-    }
+    // const logout = (e) => {
+    //     e.preventDefault()
+    //     localStorage.removeItem('jwt');
+    //     props.setAuth(false)
+    //     toast.success("Logged out successfully!")
+    // }
     useEffect(() => {
         getName();
     }, [])
@@ -36,11 +37,12 @@ const MenuItems = (props) => {
 
     return (
         <>
+            <NavBar setAuth={props.setAuth} name={name} />
             <h1 className="dashboard">Dashboard </h1>
             <h2 className="text-white" >Welcome {name}</h2>
-            <button className="btn btn-primary"
+            {/* <button className="btn btn-primary"
                 onClick={e => logout(e)}
-            >LOGOUT</button>
+            >LOGOUT</button> */}
             <div className="row  justify-content-between">
 
 
