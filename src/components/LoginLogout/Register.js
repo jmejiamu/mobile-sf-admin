@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 
 
 const Register = (props) => {
@@ -59,42 +60,48 @@ const Register = (props) => {
 
 
     return (
-        <div>
-            <h1 className="events-section">Register</h1>
-            <form onSubmit={submitUserData}>
+        <div className="login-form" >
+            <h1 className="events-section title-sf-register my-3">SF Living Wage Coalition Admin</h1>
+            <div className="card-body px-lg-5 pt-0" >
+                <form onSubmit={submitUserData}  >
+                    <h2>Register</h2>
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="User name"
+                        className="form-control my-3"
+                        value={name}
+                        onChange={e => setName(e.target.value)}
+                    />
 
-                <input
-                    type="text"
-                    name="name"
-                    placeholder="User name"
-                    className="form-control my-3"
-                    value={name}
-                    onChange={e => setName(e.target.value)}
-                />
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="E-mail"
+                        className="form-control my-3 "
+                        value={email}
+                        onChange={e => setEmail(e.target.value)}
+                    />
 
-                <input
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                    className="form-control my-3 "
-                    value={email}
-                    onChange={e => setEmail(e.target.value)}
-                />
-
-                <input
-                    type="text"
-                    placeholder="Password"
-                    name="password"
-                    className="form-control my-3 "
-                    value={password}
-                    onChange={e => setPassword(e.target.value)}
-                />
-                <button
-                    type="button"
-                    className="btn btn-danger btn-sm mt-5"
-                    onClick={submitUserData}
-                >Register</button>
-            </form>
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        name="password"
+                        className="form-control my-3 "
+                        value={password}
+                        onChange={e => setPassword(e.target.value)}
+                    />
+                    <button
+                        type="button"
+                        className="btn btn-danger btn-lg my-3 btn-block"
+                        onClick={submitUserData}
+                    >Register</button>
+                </form>
+                <p className="text-center small text-white">
+                    You have an account already.
+                <Link to="/" className="c-style" > Singin Here!</Link>
+                </p>
+            </div>
         </div>
     );
 };
