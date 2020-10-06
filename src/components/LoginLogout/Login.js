@@ -46,10 +46,10 @@ const Login = (props) => {
             if (data.token) {
                 localStorage.setItem('jwt', data.token)
                 props.setAuth(true);
-                toast.success(" 🧑‍🚀 login succesfully!")
+                toast.success(" ✔️ Login succesfully!")
             } else {
                 props.setAuth(false)
-                toast.error(data)
+                toast.error(` ❌ ${data}`)
             }
 
         } catch (error) {

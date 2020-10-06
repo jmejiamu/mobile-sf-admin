@@ -19,7 +19,7 @@ const AddEvents = (props) => {
                 duration: durationData,
                 notes: notesData,
                 location: locationData,
-                
+
             }
 
             const response = await fetch(`http://157.245.184.202:8080/addEvent`, {
@@ -31,6 +31,7 @@ const AddEvents = (props) => {
             console.error(error);
         }
         window.location = '/events'
+        // props.history.push('/events')
     }
 
     return (

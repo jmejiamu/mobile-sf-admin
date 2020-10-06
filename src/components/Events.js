@@ -2,16 +2,22 @@ import React, { useEffect, useState } from 'react';
 
 import EditEvent from './EditEvents';
 import AddEvents from './AddEvents';
+import NavBar from './NavBar';
+import { toast } from 'react-toastify';
 
 const Events = (props) => {
+    console.log('Events-props', props);
     const [eventData, setEventsData] = useState([]);
+    const [name, setName] = useState("");
 
     const deleteEvents = async (id) => {
         try {
             const deleteData = await fetch(`http://157.245.184.202:8080/deleteEvent/${id}`, {
                 method: 'DELETE'
             })
+            const data = await deleteData.json();
             setEventsData(eventData.filter(event => event.id !== id))
+            toast.success(data.data)
         } catch (error) {
             console.error(error.message);
         }
@@ -28,14 +34,32 @@ const Events = (props) => {
         }
     };
 
+
+    const getName = async () => {
+        try {
+            const response = await fetch('http://localhost:3001/dashboard', {
+                method: 'GET',
+                headers: { token: localStorage.jwt }
+            });
+            const data = await response.json()
+
+            setName(data.name)
+
+        } catch (error) {
+            console.error(error.message);
+        }
+    }
+
     useEffect(() => {
         getEvents();
+        getName();
     }, [])
     return (
         <div>
-            <h1 className="events-section">Events</h1> 
-           
-            <AddEvents/>
+            <NavBar setAuth={props.setAuth} name={name} />
+            <h1 className="events-section">Events</h1>
+
+            <AddEvents />
             {eventData.length === 0 ? <h1 className="text-center mt-5 mb-5 text-white">There is not events yet!{'😌'}</h1> : (
                 eventData.map(event => {
                     return (
@@ -62,7 +86,7 @@ const Events = (props) => {
                     )
                 })
             )}
-           
+
         </div>
     )
 }

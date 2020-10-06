@@ -10,7 +10,7 @@ const NavBar = (props) => {
         e.preventDefault()
         localStorage.removeItem('jwt')
         props.setAuth(false)
-        toast.success('Logged out Successfully!')
+        toast.success(' ✔️ Logged out Successfully!')
     }
 
 
@@ -23,7 +23,7 @@ const NavBar = (props) => {
                 </a>
 
                 <ul className="navbar-nav " >
-                    <li className="nav-item"><Link className="nav-link text-white mr-sm-5" to="/">{` 🧑🏻‍💻 ${props.name}`}</Link></li>
+                    <li className="nav-item"><Link className="nav-link text-white mr-sm-5" to="/">{` 💻 ${props.name}`}</Link></li>
                     <Link to="/menu" className="btn btn-outline-danger mr-sm-4 ">Menu</Link>
                     <button
                         type="button"

@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import NavBar from '../NavBar';
 
 
 
 
-const Assistance = () => {
+const Assistance = (props) => {
     const [assistanceData, setAssistanceData] = useState([]);
+    const [name, setName] = useState("");
 
     const deleteAssistance = async (id) => {
         try {
@@ -31,11 +33,28 @@ const Assistance = () => {
 
     };
 
+    const getName = async () => {
+        try {
+            const response = await fetch('http://localhost:3001/dashboard', {
+                method: 'GET',
+                headers: { token: localStorage.jwt }
+            });
+            const data = await response.json()
+
+            setName(data.name)
+
+        } catch (error) {
+            console.error(error.message);
+        }
+    }
+
     useEffect(() => {
         getData();
+        getName();
     }, [])
     return (
         <div>
+            <NavBar setAuth={props.setAuth} name={name} />
             <h1 className="events-section">Assistance Screen</h1>
             {assistanceData === 0 ? <h1 className="text-center mt-5 mb-5 text-white">There is not events yet!{'😌'}</h1> : (
                 assistanceData.map((assistance) => {
