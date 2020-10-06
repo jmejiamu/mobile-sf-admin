@@ -15,7 +15,7 @@ import Register from './components/LoginLogout/Register';
 toast.configure()
 const App = () => {
 
-    const [isAuthenticated, setAuthenticated] = useState(false);
+    const [isAuthenticated, setAuthenticated] = useState(true);
 
     // this will taggle false to true  or true to false
     const setAuth = (boolean) => {
