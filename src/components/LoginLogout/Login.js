@@ -84,7 +84,7 @@ const Login = (props) => {
             <div className="card-body px-lg-5 pt-0" >
 
                 <form onSubmit={submitUserData} 
-                        onSubmit={ () => handleSubmit}
+                        onSubmit={ e => handleSubmit(e)}
                         onKeyPress={e => onEnter(e, checkUserInput)} >
 
                     <h2 className="events-section">

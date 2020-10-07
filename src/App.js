@@ -15,7 +15,7 @@ import Register from './components/LoginLogout/Register';
 toast.configure()
 const App = () => {
 
-    const [isAuthenticated, setAuthenticated] = useState(true);
+    const [isAuthenticated, setAuthenticated] = useState(false);
 
     // this will taggle false to true  or true to false
     const setAuth = (boolean) => {
@@ -63,6 +63,7 @@ const App = () => {
                     <Route exact path='/events' render={props => isAuthenticated ? <Events {...props} setAuth={setAuth} /> : <Redirect to="/" />} />
                     <Route exact path='/register' render={props => !isAuthenticated ? <Register {...props} setAuth={setAuth} /> : <Redirect to="/" />} />
                     <Route exact path='/assistance' render={props => isAuthenticated ? <Assistance {...props} setAuth={setAuth} /> : <Redirect to="/" />} />
+                    
                 </Switch>
 
             </div>
