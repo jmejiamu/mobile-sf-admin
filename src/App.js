@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 // Components
-import NavBar from './components/NavBar';
+
 import MenuItems from './components/MenuItems';
 import Events from './components/Events';
 import Assistance from './components/Assisstance/Assistance';
@@ -15,7 +15,7 @@ import Register from './components/LoginLogout/Register';
 toast.configure()
 const App = () => {
 
-    const [isAuthenticated, setAuthenticated] = useState(true);
+    const [isAuthenticated, setAuthenticated] = useState(false);
 
     // this will taggle false to true  or true to false
     const setAuth = (boolean) => {
