@@ -65,8 +65,8 @@ const Login = (props) => {
 
                 <form onSubmit={submitUserData}  >
 
-                    <h2 className="events-section">
-                        Login
+                    <h2>
+                        Log in
                     </h2>
                     <input
                         type="text"
