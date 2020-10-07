@@ -10,6 +10,25 @@ const Login = (props) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    
+    // Listener function to enter keypress. Call to check input and attempt login
+    const onEnter = (event, callback) => event.key === 'Enter' && callback()
+
+    const handleSubmit = (event) => {
+        alert('A name was submitted: ' + this.state.value);
+        event.preventDefault();
+    }
+
+    const checkUserInput = () => {
+        if (password === ""){
+            console.log("Enter password!") 
+        } else {  console.log(password+" !") }
+           
+        if (email === ""){
+            console.log("Please Enter Email!") 
+        } else {console.log( email +" !") }
+    }
+
     const goToRegister = () => {
         props.history.push('/register')
     }
@@ -28,6 +47,7 @@ const Login = (props) => {
         //         alert('wrong credential')
         //         // console.log(response)
         //     })
+
 
         try {
             const body = {
@@ -63,7 +83,9 @@ const Login = (props) => {
 
             <div className="card-body px-lg-5 pt-0" >
 
-                <form onSubmit={submitUserData}  >
+                <form onSubmit={submitUserData} 
+                        onSubmit={ () => handleSubmit}
+                        onKeyPress={e => onEnter(e, checkUserInput)} >
 
                     <h2>
                         Log in
@@ -80,13 +102,14 @@ const Login = (props) => {
                         type="password"
                         placeholder="Password"
                         className="form-control"
+                        required="required"
                         value={password}
                         onChange={e => setPassword(e.target.value)}
                     />
                     <button
-                        type="button"
+                        type="submit" 
                         className="btn btn-danger btn-lg my-3 btn-block"
-                        onClick={submitUserData}
+                        // onClick={submitUserData}
                     >
                         Log In</button>
 
