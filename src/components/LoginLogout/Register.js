@@ -92,7 +92,7 @@ const Register = (props) => {
                         onChange={e => setPassword(e.target.value)}
                     />
                     <button
-                        type="button"
+                        type="submit"
                         className="btn btn-danger btn-lg my-3 btn-block"
                         onClick={submitUserData}
                     >Register</button>

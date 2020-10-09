@@ -12,22 +12,8 @@ const Login = (props) => {
 
     
     // Listener function to enter keypress. Call to check input and attempt login
-    const onEnter = (event, callback) => event.key === 'Enter' && callback()
+    //const onEnter = (event, callback) => event.key === 'Enter' && callback()
 
-    const handleSubmit = (event) => {
-        alert('A name was submitted: ' + this.state.value);
-        event.preventDefault();
-    }
-
-    const checkUserInput = () => {
-        if (password === ""){
-            console.log("Enter password!") 
-        } else {  console.log(password+" !") }
-           
-        if (email === ""){
-            console.log("Please Enter Email!") 
-        } else {console.log( email +" !") }
-    }
 
     const goToRegister = () => {
         props.history.push('/register')
@@ -78,14 +64,13 @@ const Login = (props) => {
     }
 
     return (
-        <div className="login-form" >
+        <div className="login-form">
             <h1 className="title-sf" >SF Living Wage Coalition Admin </h1>
 
             <div className="card-body px-lg-5 pt-0" >
 
                 <form onSubmit={submitUserData} 
-                        onSubmit={ e => handleSubmit(e)}
-                        onKeyPress={e => onEnter(e, checkUserInput)} >
+                        >
 
                     <h2 className="events-section">
                         Login
@@ -109,7 +94,7 @@ const Login = (props) => {
                     <button
                         type="submit" 
                         className="btn btn-danger btn-lg my-3 btn-block"
-                        // onClick={submitUserData}
+                        onClick={submitUserData}
                     >
                         Log In</button>
 
