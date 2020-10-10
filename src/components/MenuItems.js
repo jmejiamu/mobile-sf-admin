@@ -68,7 +68,7 @@ const MenuItems = (props) => {
                     <div className="card-body" style={{ width: '400px' }}>
                         <h5 className="card-title">Art</h5>
                         <p className="card-text">Update art information</p>
-                        <Link to="#" className="btn btn-danger">Go to events</Link>
+                        <Link to="/art" className="btn btn-danger">Go to events</Link>
                     </div>
                 </div>
 
