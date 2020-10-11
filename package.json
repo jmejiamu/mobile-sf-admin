@@ -7,11 +7,17 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.20.0",
+    "bcrypt": "^5.0.0",
+    "moment": "^2.29.1",
+    "moment-timezone": "^0.5.31",
     "react": "^16.13.1",
+    "react-datepicker": "^3.2.2",
     "react-dom": "^16.13.1",
+    "react-moment": "^1.0.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
-    "react-toastify": "^6.0.8"
+    "react-toastify": "^6.0.8",
+    "react-tooltip": "^4.2.10"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -8,6 +8,7 @@ const Login = (props) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+
     const submitUserData = async (e) => {
         e.preventDefault()
 
@@ -52,12 +53,14 @@ const Login = (props) => {
     }
 
     return (
-        <div className="login-form" >
+        <div className="login-form">
             <h1 className="title-sf" >SF Living Wage Coalition Admin </h1>
 
             <div className="card-body px-lg-5 pt-0" >
 
+
                 <form onSubmit={submitUserData} >
+
 
                     <h2>
                         Log in
