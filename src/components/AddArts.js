@@ -12,7 +12,7 @@ const AddArts = (props) =>{
         const formData = new FormData();
         formData.append("image", pictureResource.raw);
         try {
-            await fetch("localhost:8080/addArt", {
+            await fetch("localhost:3001/addArt", {
             method: "POST",
             headers: {
                 "Content-Type": "multipart/form-data"

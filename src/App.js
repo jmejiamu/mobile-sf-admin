@@ -16,7 +16,7 @@ import Art from './components/Art'
 toast.configure()
 const App = () => {
 
-    const [isAuthenticated, setAuthenticated] = useState(true);
+    const [isAuthenticated, setAuthenticated] = useState(false);
 
     // this will taggle false to true  or true to false
     const setAuth = (boolean) => {
