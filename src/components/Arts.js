@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-const Art = (props) => {
+const Arts = (props) => {
     const [artData, setArtData] = useState([]);
 
     const getArt = async () => {
@@ -26,7 +26,7 @@ const Art = (props) => {
                     return (
                         <div className="card mb-5" key={art.id}>
                             <div className="card-body text-left" >
-                                <img className="card-img-top" src={art.path} alt="image" />
+                                <img className="card-img-top" src={art.path} alt="user-pic" />
                                 <h5 className="card-title" >{art.title}</h5>
                                 {/* <p>Image url: {art.path}</p> */}
                                 <p><strong>Cost: </strong> {art.details}</p>
@@ -44,4 +44,4 @@ const Art = (props) => {
     )
 }
 
-export default Art;
+export default Arts;
