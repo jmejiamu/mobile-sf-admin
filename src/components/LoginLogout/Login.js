@@ -1,7 +1,5 @@
 import React, { useState, } from 'react';
 
-// import axios from 'axios';
-import MenuItems from './../MenuItems';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 
@@ -9,15 +7,6 @@ const Login = (props) => {
     // console.log(props);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
-    
-    // Listener function to enter keypress. Call to check input and attempt login
-    //const onEnter = (event, callback) => event.key === 'Enter' && callback()
-
-
-    const goToRegister = () => {
-        props.history.push('/register')
-    }
 
 
     const submitUserData = async (e) => {
@@ -69,11 +58,12 @@ const Login = (props) => {
 
             <div className="card-body px-lg-5 pt-0" >
 
-                <form onSubmit={submitUserData} 
-                        >
 
-                    <h2 className="events-section">
-                        Login
+                <form onSubmit={submitUserData} >
+
+
+                    <h2>
+                        Log in
                     </h2>
                     <input
                         type="text"
@@ -92,17 +82,13 @@ const Login = (props) => {
                         onChange={e => setPassword(e.target.value)}
                     />
                     <button
-                        type="submit" 
+                        type="submit"
                         className="btn btn-danger btn-lg my-3 btn-block"
                         onClick={submitUserData}
                     >
                         Log In</button>
 
-                    {/* <button
-                        type="button"
-                        className="btn btn-danger btn-sm my-3"
-                        onClick={goToRegister}
-                    >Register</button> */}
+
                 </form>
                 <p className="text-center small text-white" >
                     Dont have an account
