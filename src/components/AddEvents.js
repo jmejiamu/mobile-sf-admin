@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
-import ReactTooltip from 'react-tooltip'
+import ReactTooltip from 'react-tooltip';
 
 const AddEvents = (props) => {
     const [descriptionData, setDescriptionData] = useState('');
@@ -74,7 +74,7 @@ const AddEvents = (props) => {
                 
             }
             
-            if (valid == true){
+            if (valid === true){
                 const response = await fetch(`http://157.245.184.202:8080/addEvent`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
