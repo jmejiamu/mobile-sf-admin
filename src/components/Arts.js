@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import AddArts from './AddArts';
 import NavBar from './NavBar';
+import EditArt from './EditArt';
 
 const Arts = (props) => {
     const [artData, setArtData] = useState([]);
@@ -38,6 +39,9 @@ const Arts = (props) => {
                                 <p><strong>User name:</strong> {art.name}</p>
                                 <p><strong>User' Bid: </strong>{art.bid}</p>
                                 <p><strong>Phone or Email:  </strong>{art.phone_email}</p>
+                                <div className=" card-link btn-group">
+                                    <EditArt art={art} props={props} />
+                                </div>
 
                                 <button
                                     type="button"
