@@ -38,6 +38,11 @@ const Arts = (props) => {
                                 <p><strong>User name:</strong> {art.name}</p>
                                 <p><strong>User' Bid: </strong>{art.bid}</p>
                                 <p><strong>Phone or Email:  </strong>{art.phone_email}</p>
+
+                                <button
+                                    type="button"
+                                    className="card-link btn btn btn-danger"
+                                >Delete</button>
                             </div>
 
                         </div>
