@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { toast } from 'react-toastify';
 import NavBar from './NavBar';
 
 const MenuItems = (props) => {
@@ -67,9 +66,10 @@ const MenuItems = (props) => {
                 <div className="card mb-5" >
                     {/* <img class="card-img-top" src="..." alt="Card image cap"> */}
                     <div className="card-body" style={{ width: '400px' }}>
-                        <h5 className="card-title">Art </h5>
-                        <p className="card-text">Upload Art picture and update informations </p>
-                        <Link to="/art" className="btn btn-danger">Go to Arts</Link>
+                        <h5 className="card-title">Art</h5>
+                        <p className="card-text">Update art information</p>
+                        <Link to="/arts" className="btn btn-danger">Go to events</Link>
+
                     </div>
                 </div>
 

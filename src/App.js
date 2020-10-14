@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 // Components
-import NavBar from './components/NavBar';
+
 import MenuItems from './components/MenuItems';
 import Events from './components/Events';
 import Assistance from './components/Assisstance/Assistance';
 import Login from './components/LoginLogout/Login';
 // import PageNotFound from './components/PageNotFound';
 import Register from './components/LoginLogout/Register';
-import Art from './components/Art'
+
+import Art from './components/Art';
 
 toast.configure()
 const App = () => {
@@ -64,7 +65,8 @@ const App = () => {
                     <Route exact path='/events' render={props => isAuthenticated ? <Events {...props} setAuth={setAuth} /> : <Redirect to="/" />} />
                     <Route exact path='/register' render={props => !isAuthenticated ? <Register {...props} setAuth={setAuth} /> : <Redirect to="/" />} />
                     <Route exact path='/assistance' render={props => isAuthenticated ? <Assistance {...props} setAuth={setAuth} /> : <Redirect to="/" />} />
-                    <Route exact Path='/art' render={props => isAuthenticated? <Art {...props} setAuth={setAuth} /> : <Redirect to="/" />} />
+
+                    <Route exact path='/arts' render={props => isAuthenticated ? <Art {...props} setAuth={setAuth} /> : <Redirect to="/" />} />
                 </Switch>
 
             </div>
