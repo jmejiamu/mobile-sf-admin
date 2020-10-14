@@ -48,9 +48,9 @@ const AddEvents = (props) => {
             validForm = false
         } else {setEndDateError('')}
 
-        var regex2 = /^(\d{1,2}-\d{1,2})\s-\s(\d{1,2}-\d{1,2})$/;
+        var regex2 = /^(\d{1,2}:\d{1,2})\s-\s(\d{1,2}:\d{1,2})$/;
         if (regex2.test(durationData) === false){
-            setDurationDateError('Please match the format hh-mm - hh-mm ')
+            setDurationDateError('Please match the format hh:mm - hh:mm ')
             validForm = false
         }else {setDurationDateError('')}
     
@@ -150,7 +150,7 @@ const AddEvents = (props) => {
                             <label>From</label>
                             <input
                                 type="text"
-                                placeholder="hh-mm - hh-mm"
+                                placeholder="hh:mm - hh:mm"
                                 className="form-control"
                                 value={durationData}
                                 onChange={e => setDurationData(e.target.value)}/>
