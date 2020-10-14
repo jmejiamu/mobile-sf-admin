@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect } from 'react'
+import AddArts from './AddArts';
 
 const Art = (props) => {
     const [artData, setArtData] = useState([]);
@@ -21,7 +22,7 @@ const Art = (props) => {
     return (
         <div>
             <h1 className="text-white">Art Section</h1>
-
+            <AddArts />
             {artData.length === 0 ? <h1 className="text-center mt-5 mb-5 text-white">There is not art piece yet {'😌'} </h1> : (
                 artData.map(art => {
                     return (
