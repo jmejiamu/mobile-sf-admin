@@ -6,7 +6,7 @@ const Art = (props) => {
     const [artData, setArtData] = useState([]);
 
     const getArt = async () => {
-        try {
+        try { 
             const response = await fetch('http://157.245.184.202:8080/arts')
             const jsonData = await response.json()
             setArtData(jsonData);
