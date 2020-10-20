@@ -1,8 +1,10 @@
 
 import React, { useState, useEffect } from 'react'
 import AddArts from './AddArts';
+import NavBar from './NavBar';
+import EditArt from './EditArt';
 
-const Art = (props) => {
+const Arts = (props) => {
     const [artData, setArtData] = useState([]);
 
     const getArt = async () => {
@@ -21,6 +23,7 @@ const Art = (props) => {
 
     return (
         <div>
+            <NavBar />
             <h1 className="text-white">Art Section</h1>
             <AddArts />
             {artData.length === 0 ? <h1 className="text-center mt-5 mb-5 text-white">There is not art piece yet {'😌'} </h1> : (
@@ -28,7 +31,7 @@ const Art = (props) => {
                     return (
                         <div className="card mb-5" key={art.id}>
                             <div className="card-body text-left" >
-                                <img className="card-img-top" src={art.path} alt="image" />
+                                <img className="card-img-top" src={art.path} alt="user-pic" />
                                 <h5 className="card-title" >{art.title}</h5>
                                 {/* <p>Image url: {art.path}</p> */}
                                 <p><strong>Cost: </strong> {art.details}</p>
@@ -36,6 +39,14 @@ const Art = (props) => {
                                 <p><strong>User name:</strong> {art.name}</p>
                                 <p><strong>User' Bid: </strong>{art.bid}</p>
                                 <p><strong>Phone or Email:  </strong>{art.phone_email}</p>
+                                <div className=" card-link btn-group">
+                                    <EditArt art={art} props={props} />
+                                </div>
+
+                                <button
+                                    type="button"
+                                    className="card-link btn btn btn-danger"
+                                >Delete</button>
                             </div>
 
                         </div>
@@ -46,5 +57,4 @@ const Art = (props) => {
     )
 }
 
-export default Art;
-
+export default Arts;
