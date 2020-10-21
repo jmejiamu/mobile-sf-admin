@@ -52,7 +52,6 @@ const AddArts = (props) => {
                 console.error(error);
             }
 
-
             // for (var pair of formData.entries()) {
             //     console.log(pair[0]+ ', ' + pair[1]); 
             // }
@@ -178,9 +177,6 @@ const AddArts = (props) => {
 
                             {pictureError.length > 0 &&
                                 <span className='error' style={{ color: 'red' }}>{pictureError} </span>}
-
-
-
 
                         </div>
 
