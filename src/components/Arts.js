@@ -6,9 +6,10 @@ import EditArt from './EditArt';
 
 const Arts = (props) => {
     const [artData, setArtData] = useState([]);
+    const [name, setName] = useState("");
 
     const getArt = async () => {
-        try { 
+        try {
             const response = await fetch('http://157.245.184.202:8080/arts')
             const jsonData = await response.json()
             setArtData(jsonData);
@@ -16,14 +17,29 @@ const Arts = (props) => {
             console.error(error.message);
         }
     };
+    const getName = async () => {
+        try {
+            const response = await fetch('http://localhost:3001/dashboard', {
+                method: 'GET',
+                headers: { token: localStorage.jwt }
+            });
+            const data = await response.json()
+
+            setName(data.name)
+
+        } catch (error) {
+            console.error(error.message);
+        }
+    }
 
     useEffect(() => {
         getArt();
-    })
+        getName();
+    }, [])
 
     return (
         <div>
-            <NavBar />
+            <NavBar setAuth={props.setAuth} name={name} />
             <h1 className="text-white">Art Section</h1>
             <AddArts />
             {artData.length === 0 ? <h1 className="text-center mt-5 mb-5 text-white">There is not art piece yet {'😌'} </h1> : (
