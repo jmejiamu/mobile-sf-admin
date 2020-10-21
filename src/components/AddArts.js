@@ -31,8 +31,6 @@ const AddArts = (props) => {
                 console.log(pair[0] + ', ' + pair[1]);
             }
 
-<<<<<<< HEAD
-=======
             try {
                 await fetch("http://localhost:3001/addart", {
                     method: "POST",
@@ -53,70 +51,8 @@ const AddArts = (props) => {
                 toast.warn("Fail to connect to the server")
                 console.error(error);
             }
-
-
-        // for (var pair of formData.entries()) {
-        //     console.log(pair[0]+ ', ' + pair[1]); 
-        // }
-        if(valid){
->>>>>>> e352be2301cf8e17f7e31f279fd738649cd793ba
-            try {
-                await fetch("http://localhost:3001/addart", {
-                    method: "POST",
-                    headers: {
-                        //"Content-Type": "multipart/form-data"  remove content type for the system to generate boundary parameter
-                        //"Content-Type": "application/json"
-                    },
-                    body: formData
-                    // JSON.stringify({
-                    //     title: titleData,
-                    //     description: descriptionData,
-                    //     photo: pictureResource.raw
-                    // }),
-                });
-                toast.success(" ✔️ New Art work added succesfully!")
-                //window.location = '/art'
-            } catch (error) {
-                toast.warn("Fail to connect to the server")
-                console.error(error);
-            }
-<<<<<<< HEAD
-
-
-            // for (var pair of formData.entries()) {
-            //     console.log(pair[0]+ ', ' + pair[1]); 
-            // }
-            if (valid) {
-                try {
-                    await fetch("http://localhost:3001/addart", {
-                        method: "POST",
-                        headers: {
-                            //"Content-Type": "multipart/form-data"  remove content type for the system to generate boundary parameter
-                            //"Content-Type": "application/json"
-                        },
-                        body: formData
-                        // JSON.stringify({
-                        //     title: titleData,
-                        //     description: descriptionData,
-                        //     photo: pictureResource.raw
-                        // }),
-                    });
-                    toast.success(" ✔️ New Art work added succesfully!")
-                    window.location = '/arts'
-                } catch (error) {
-                    toast.warn("Fail to connect to the server")
-                    console.error(error);
-                }
-            }
         }
 
-
-=======
-        }   
-        } 
-        }
-
->>>>>>> e352be2301cf8e17f7e31f279fd738649cd793ba
     }
 
     const formValidation = () => {
@@ -214,9 +150,6 @@ const AddArts = (props) => {
 
                             {pictureError.length > 0 &&
                                 <span className='error' style={{ color: 'red' }}>{pictureError} </span>}
-
-
-
 
                         </div>
 
