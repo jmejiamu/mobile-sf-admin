@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
+import ReactDatePicker from 'react-datepicker';
 import { toast } from 'react-toastify';
 import ReactTooltip from 'react-tooltip';
+import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
+import Moment from 'moment';
+import { getDefaultNormalizer } from '@testing-library/react';
 
 const AddEvents = (props) => {
     const [descriptionData, setDescriptionData] = useState('');
@@ -9,6 +14,8 @@ const AddEvents = (props) => {
     const [durationData, setDurationData] = useState('');
     const [startData, setStartData] = useState('');
     const [endData, setEndData] = useState('');
+    const [startDate, setStartDate] = useState(new Date());
+    const [endDate, setEndDate] = useState(new Date());
 
     //form validation
     const [descriptionError, setDescriptionError ] = useState('');
@@ -17,7 +24,32 @@ const AddEvents = (props) => {
     const [durationDateError, setDurationDateError ] = useState('')
     const [startDateError, setStartDateError ] = useState('')
     const [endDateError, setEndDateError ] = useState('');
+    
+    const startDateHanlder = (date) =>{
+        setDurationData("")
 
+        setStartDate(date) //dateFormat("yyyy-mm-dd")
+        var dateString = Moment(date).format('YYYY-MM-DD')  
+        setStartData(dateString)
+        
+        var dateString = Moment(date).format('hh:mm a')
+        setDurationData(dateString)
+       
+    }
+
+    const endDateHanlder = (date) =>{
+
+        setEndDate(date) //dateFormat("yyyy-mm-dd")
+        var dateString = Moment(date).format('YYYY-MM-DD')  
+        setEndData(dateString)
+
+        var startTimeString = Moment(startDate).format('hh:mm a')
+        var endTimeString = Moment(date).format('hh:mm a')
+        
+        var durationString = `${startTimeString} - ${endTimeString}`
+        setDurationData( durationString)
+        
+    }
 
     const formValidation = (ret) =>{
         var validForm = ret
@@ -48,11 +80,20 @@ const AddEvents = (props) => {
             validForm = false
         } else {setEndDateError('')}
 
-        var regex2 = /^(\d{1,2}:\d{1,2})\s-\s(\d{1,2}:\d{1,2})$/;
+        var regex2 = /^(\d{1,2}:\d{1,2})\s*([AaPp][Mm])\s-\s(\d{1,2}:\d{1,2})\s*([AaPp][Mm])$/;
         if (regex2.test(durationData) === false){
-            setDurationDateError('Please match the format hh:mm - hh:mm ')
+            setDurationDateError('Please match enter both start and end time in corret format')
             validForm = false
         }else {setDurationDateError('')}
+
+        if(startDate >= endDate){
+            setDurationDateError('End date cannot be before start date or the same')
+            validForm = false
+        }
+
+       
+        console.log(startData)
+        console.log(durationData)
     
         return validForm
     }
@@ -147,6 +188,25 @@ const AddEvents = (props) => {
                             {locationError.length> 0 &&
                             <div className='error'style={{color: 'red'}}>{locationError}</div>}
 
+<div>Pick the start and end Date here</div>
+                            <DatePicker
+                                placeholder="yyyy-mm-dd"
+                                className="form-control"
+                                minDate={new Date()}
+                                showTimeSelect
+                                dateFormat={"yyyy-MM-dd hh:mm "}
+                                selected={startDate}
+                                onChange={e => startDateHanlder(e)}  />
+                            <div>to </div>
+                             <DatePicker
+                                placeholder="yyyy-MM-dd"
+                                className="form-control"
+                                minDate={new Date()}
+                                showTimeSelect
+                                dateFormat={"yyyy-MM-dd hh:mm "}
+                                selected={endDate}
+                                onChange={e => endDateHanlder(e)}  />
+                             <div> --- </div>
                             <label>From</label>
                             <input
                                 type="text"
@@ -162,7 +222,7 @@ const AddEvents = (props) => {
                             <input
                                 type="text"
                                 className="form-control"
-                                placeholder="yyyy-mm-dd"
+                                placeholder="yyyy-mm-dd"      
                                 value={startData}
                                 onChange={e => setStartData(e.target.value)}  />
 
@@ -179,7 +239,7 @@ const AddEvents = (props) => {
 
                              {endDateError.length> 0 &&
                             <span className='error'style={{color: 'red'}}>{endDateError}</span>}
-                    
+
                         </div>
 
 
