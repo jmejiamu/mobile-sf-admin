@@ -17,6 +17,9 @@ __NOTE:__ dashboard is under construction
 ![screencapture-localhost-3000-events-2020-10-06-12_50_14](https://user-images.githubusercontent.com/27458911/95252955-8f155a80-07d2-11eb-8a79-04f905771483.png)
 
 ## Technologies used
+* Design
+  * __Tool__
+    * Figma
 * JavaScript
   * __Front End__
     * React
