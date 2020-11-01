@@ -28,7 +28,7 @@ const AddArts = (props) => {
             formData.append("photo", pictureResource.raw);
 
             try {
-                await fetch("http://localhost:3001/addart", {
+                await fetch("http://157.245.184.202:8080/addart", {
                     method: "POST",
                     headers: {
                         //"Content-Type": "multipart/form-data"  remove content type for the system to generate boundary parameter
