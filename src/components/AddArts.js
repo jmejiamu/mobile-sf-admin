@@ -7,13 +7,14 @@ const AddArts = (props) => {
     const [pictureDescription, setPictureDescription] = useState('')
     const [descriptionData, setDescriptionData] = useState('');
     const [titleData, setTitleData] = useState('');
+    const [bidData, setBidData] = useState('');
     //name?  phone_email? bid? contact?
 
     //form validation
     const [titleError, setTitleError] = useState('');
     const [descriptionError, setDescriptionError] = useState('');
     const [pictureError, setPictureError] = useState('');
-
+    const [bidError, setBidError] = useState('');
 
     const updateDataEvent = async (e) => {
         //e.preventDefault();
@@ -26,20 +27,17 @@ const AddArts = (props) => {
             formData.append("title", titleData);
             formData.append("description", descriptionData);
             formData.append("photo", pictureResource.raw);
-
+            formData.append("minimunbid", bidData);
             try {
-                await fetch("http://localhost:3001/addart", {
+                await fetch("http://157.245.184.202:8080/addart", {
                     method: "POST",
                     headers: {
-                        //"Content-Type": "multipart/form-data"  remove content type for the system to generate boundary parameter
+                         //remove content type for the system to generate boundary parameter
+                        //"Content-Type": "multipart/form-data"  
                         //"Content-Type": "application/json"
                     },
                     body: formData
-                    // JSON.stringify({
-                    //     title: titleData,
-                    //     description: descriptionData,
-                    //     photo: pictureResource.raw
-                    // }),
+          
                 });
                 toast.success(" ✔️ New Art work added succesfully!")
                 window.location = '/arts'
@@ -70,6 +68,11 @@ const AddArts = (props) => {
             setPictureError("Please submit a picture")
             validForm = false
         } else { setPictureError('') }
+        
+        if (bidData.length <= 0) {
+            setBidError("Please set up minimun bid")
+            validForm = false
+        } else { setBidError('') }
 
         return validForm
     }
@@ -140,6 +143,18 @@ const AddArts = (props) => {
 
                             {descriptionError.length > 0 &&
                                 <span className='error' style={{ color: 'red' }}>{descriptionError} </span>}
+                            
+                            <label></label>
+                            <textarea
+                                type="text"
+                                className="form-control"
+                                placeholder="Set minimun bid"
+                                value={bidData}
+                                onChange={e => setBidData(e.target.value)} ></textarea>
+
+                            {bidError.length > 0 &&
+                                <span className='error' style={{ color: 'red' }}>{bidError} </span>}
+
 
 
                             <input
