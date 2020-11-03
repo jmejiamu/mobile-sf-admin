@@ -10,7 +10,7 @@ const Arts = (props) => {
 
     const deleteArt = async (id) => {
         try {
-            const deleteData = await fetch(`http://157.245.184.202:8080/deleteEvent/${id}`, {
+            const deleteData = await fetch(`http://157.245.184.202:8080/deleteart/${id}`, {
                 method: "DELETE"
             })
             const data = await deleteData.json();
