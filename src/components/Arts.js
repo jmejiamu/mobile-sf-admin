@@ -8,6 +8,19 @@ const Arts = (props) => {
     const [artData, setArtData] = useState([]);
     const [name, setName] = useState("");
 
+    const deleteArt = async (id) => {
+        try {
+            const deleteData = await fetch(`http://157.245.184.202:8080/deleteEvent/${id}`, {
+                method: "DELETE"
+            })
+            const data = await deleteData.json();
+            setArtData(artData.filter(art => art.id !== id))
+
+        } catch (error) {
+            console.error(error.message);
+        }
+    }
+
     const getArt = async () => {
         try {
             const response = await fetch('http://157.245.184.202:8080/arts')
@@ -62,6 +75,7 @@ const Arts = (props) => {
                                 <button
                                     type="button"
                                     className="card-link btn btn btn-danger"
+                                    onClick={() => deleteArt(art.id)}
                                 >Delete</button>
                             </div>
 
