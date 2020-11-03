@@ -30,10 +30,12 @@ const EditArt = (props) => {
     }
 
     const onFileChange = e => {
-        setPictureResource({
-            preview: URL.createObjectURL(e.target.file[0]),
-            raw: e.target.file[0]
-        });
+        if (e.target.files.length) {
+            setPictureResource({
+                preview: URL.createObjectURL(e.target.files[0]),
+                raw: e.target.files[0]
+            });
+        }
     }
 
     return (
@@ -54,6 +56,16 @@ const EditArt = (props) => {
                             <h4 className="modal-title modal-style">Edit Event</h4>
                             <button type="button" className="close" data-dismiss="modal">&times;</button>
                         </div>
+                        <label htmlFor="upload-button">
+
+                            {pictureResource.preview ? (
+                                <img src={pictureResource.preview} alt="updated-pic-view" width="300" height="300" />) :
+                                (
+                                    <h5 className="text-center">Upload your photo</h5>
+
+                                )}
+                        </label>
+
 
 
                         <div className="modal-body modal-style">
