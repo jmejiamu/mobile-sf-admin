@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { toast } from 'react-toastify';
 
 const EditArt = (props) => {
     const [title, setTitle] = useState(props.art.title);
@@ -31,10 +32,20 @@ const EditArt = (props) => {
                 },
                 body: formData
             })
+
+            const data = await response.json()
+            console.log('>>>>', data);
+            if (data.data) {
+                toast.success("✔️ succesfully Updated")
+            } else {
+                toast.error("❌ Error occur")
+
+            }
+
         } catch (error) {
             console.error(error);
         }
-        window.location = '/events'
+        window.location = '/arts'
     }
 
     const onFileChange = e => {
