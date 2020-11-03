@@ -11,17 +11,25 @@ const EditArt = (props) => {
 
         // e.preventDefault();
         try {
-            const body = {
-                title: title,
-                deatils: cost, //cost
-                contact: contact, //details
-                path: pictureResource
-            }
+            // const body = {
+            //     title: title,
+            //     deatils: cost, //cost
+            //     contact: contact, //details
+            //     photo: pictureResource.raw
+            // }
 
-            const response = await fetch(`http://157.245.184.202:8080/updateEvent/${props.event.id}`, {
+            const formData = new FormData();
+            formData.append("title", title)
+            formData.append("details", cost)
+            formData.append("contact", contact)
+            formData.append("photo", pictureResource.raw)
+
+            const response = await fetch(`http://157.245.184.202:8080/updateart/${props.art.id}`, {
                 method: 'PUT',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(body)
+                headers: {
+                    // 'Content-Type': 'application/json'
+                },
+                body: formData
             })
         } catch (error) {
             console.error(error);
@@ -59,7 +67,7 @@ const EditArt = (props) => {
                         <label htmlFor="upload-button">
 
                             {pictureResource.preview ? (
-                                <img src={pictureResource.preview} alt="updated-pic-view" width="300" height="300" />) :
+                                <img src={pictureResource.preview} alt="updated-pic-view" width="100%" height="300" />) :
                                 (
                                     <h5 className="text-center">Upload your photo</h5>
 
