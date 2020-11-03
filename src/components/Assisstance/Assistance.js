@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import NavBar from '../NavBar';
+import { toast } from 'react-toastify';
 
 
 
@@ -10,10 +11,12 @@ const Assistance = (props) => {
 
     const deleteAssistance = async (id) => {
         try {
-            const deleteData = await fetch(`http://157.245.184.202:8080/deleteAssistance/${id}`, {
+            const deleteData = await fetch(`http://157.245.184.202:8080/deleteassistance/${id}`, {
                 method: 'DELETE'
             })
+            const data = await deleteData.json();
             setAssistanceData(assistanceData.filter(assistanceToDelete => assistanceToDelete.id !== id))
+            toast.success(data.data)
         } catch (error) {
             console.error(error.message);
         }

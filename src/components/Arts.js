@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import AddArts from './AddArts';
 import NavBar from './NavBar';
 import EditArt from './EditArt';
+import { toast } from 'react-toastify';
 
 const Arts = (props) => {
     const [artData, setArtData] = useState([]);
@@ -15,6 +16,7 @@ const Arts = (props) => {
             })
             const data = await deleteData.json();
             setArtData(artData.filter(art => art.id !== id))
+            toast.success(data.data)
 
         } catch (error) {
             console.error(error.message);
