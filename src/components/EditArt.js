@@ -5,6 +5,8 @@ const EditArt = (props) => {
     const [cost, setCost] = useState(props.art.details); //cost
     const [contact, setContact] = useState(props.art.contact); // details
 
+    const [pictureResource, setPictureResource] = useState({ preview: "", raw: "" });
+
     const updateDataEvent = async (e) => {
 
         // e.preventDefault();
@@ -13,6 +15,7 @@ const EditArt = (props) => {
                 title: title,
                 deatils: cost, //cost
                 contact: contact, //details
+                path: pictureResource
             }
 
             const response = await fetch(`http://157.245.184.202:8080/updateEvent/${props.event.id}`, {
@@ -24,6 +27,13 @@ const EditArt = (props) => {
             console.error(error);
         }
         window.location = '/events'
+    }
+
+    const onFileChange = e => {
+        setPictureResource({
+            preview: URL.createObjectURL(e.target.file[0]),
+            raw: e.target.file[0]
+        });
     }
 
     return (
@@ -65,6 +75,12 @@ const EditArt = (props) => {
                                 className="form-control"
                                 value={contact}
                                 onChange={e => setContact(e.target.value)}></textarea>
+
+                            <input className="my-3"
+                                type="file"
+                                name="file"
+                                onChange={onFileChange}
+                            />
 
                         </div>
 
