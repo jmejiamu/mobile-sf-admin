@@ -34,7 +34,6 @@ const EditArt = (props) => {
             })
 
             const data = await response.json()
-            console.log('>>>>', data);
             if (data.data) {
                 toast.success("✔️ succesfully Updated")
             } else {
