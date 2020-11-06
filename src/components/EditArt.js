@@ -99,7 +99,7 @@ const EditArt = (props) => {
                                 className="form-control"
                                 value={cost}
                                 onChange={e => setCost(e.target.value)} ></textarea>
-                            <label>Deatils</label>
+                            <label>Details</label>
                             <textarea
                                 type="text"
                                 className="form-control"
