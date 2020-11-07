@@ -73,7 +73,7 @@ const Assistance = (props) => {
                                     type="button"
                                     className="card-link btn btn btn-danger"
                                     onClick={() => deleteAssistance(assistance.id)}
-                                >DELETE</button>
+                                >Delete</button>
 
                             </div>
 
