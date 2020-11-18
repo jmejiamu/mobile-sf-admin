@@ -120,7 +120,7 @@ const AddArts = (props) => {
 
                                     )}
                             </label>
-
+                            
                             <label></label>
                             <textarea
                                 type="text"
