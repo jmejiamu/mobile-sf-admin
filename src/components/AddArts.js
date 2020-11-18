@@ -32,12 +32,12 @@ const AddArts = (props) => {
                 await fetch("http://157.245.184.202:8080/addart", {
                     method: "POST",
                     headers: {
-                         //remove content type for the system to generate boundary parameter
+                        //remove content type for the system to generate boundary parameter
                         //"Content-Type": "multipart/form-data"  
                         //"Content-Type": "application/json"
                     },
                     body: formData
-          
+
                 });
                 toast.success(" ✔️ New Art work added succesfully!")
                 window.location = '/arts'
@@ -68,7 +68,7 @@ const AddArts = (props) => {
             setPictureError("Please submit a picture")
             validForm = false
         } else { setPictureError('') }
-        
+
         if (bidData.length <= 0) {
             setBidError("Please set up minimun bid")
             validForm = false
@@ -143,7 +143,7 @@ const AddArts = (props) => {
 
                             {descriptionError.length > 0 &&
                                 <span className='error' style={{ color: 'red' }}>{descriptionError} </span>}
-                            
+
                             <label></label>
                             <textarea
                                 type="text"

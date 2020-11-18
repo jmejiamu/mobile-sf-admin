@@ -3,10 +3,25 @@ import React, { useState, useEffect } from 'react'
 import AddArts from './AddArts';
 import NavBar from './NavBar';
 import EditArt from './EditArt';
+import { toast } from 'react-toastify';
 
 const Arts = (props) => {
     const [artData, setArtData] = useState([]);
     const [name, setName] = useState("");
+
+    const deleteArt = async (id) => {
+        try {
+            const deleteData = await fetch(`http://157.245.184.202:8080/deleteart/${id}`, {
+                method: "DELETE"
+            })
+            const data = await deleteData.json();
+            setArtData(artData.filter(art => art.id !== id))
+            toast.success(data.data)
+
+        } catch (error) {
+            console.error(error.message);
+        }
+    }
 
     const getArt = async () => {
         try {
@@ -62,6 +77,7 @@ const Arts = (props) => {
                                 <button
                                     type="button"
                                     className="card-link btn btn btn-danger"
+                                    onClick={() => deleteArt(art.id)}
                                 >Delete</button>
                             </div>
 
