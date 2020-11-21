@@ -7,7 +7,7 @@ const Pagination = ({ artPerPage, totalArt, paginate }) => {
         pageNumbers.push(i);
     }
     return (
-        <nav >
+        <nav className="d-flex justify-content-center" >
             <ul className="pagination mb-4"  >
                 {pageNumbers.map(number => (
                     <li key={number} className='page-item' >
