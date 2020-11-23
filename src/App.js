@@ -25,7 +25,7 @@ const App = () => {
 
     const isAuth = async () => {
         try {
-            const response = await fetch('http://localhost:3001/isverify', {
+            const response = await fetch('http://157.245.184.202:8080/isverify', {
                 method: 'GET',
                 headers: { token: localStorage.jwt }
             })
