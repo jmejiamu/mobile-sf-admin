@@ -7,16 +7,17 @@ const Pagination = ({ artPerPage, totalArt, paginate }) => {
         pageNumbers.push(i);
     }
     return (
-        <nav className="d-flex justify-content-center" >
+        <nav className="d-flex justify-content-center " >
             <ul className="pagination mb-4"  >
                 {pageNumbers.map(number => (
                     <li key={number} className='page-item' >
-                        <a onClick={() => paginate(number)} className='page-link' >{number}</a>
+                        <a onClick={() => paginate(number)} className='page-link' >
+                            {number}
+                        </a>
                     </li>
                 ))}
             </ul>
         </nav>
     );
 };
-
 export default Pagination;

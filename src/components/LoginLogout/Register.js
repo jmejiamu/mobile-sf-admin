@@ -32,7 +32,7 @@ const Register = (props) => {
                 password: password
             }
 
-            const response = await fetch('http://localhost:3001/register', {
+            const response = await fetch('http://157.245.184.202:8080/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
