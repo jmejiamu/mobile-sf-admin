@@ -58,7 +58,7 @@ const Arts = (props) => {
             <NavBar setAuth={props.setAuth} name={name} />
             <h1 className="text-white">Art Section</h1>
             <AddArts />
-            <AddDetails />
+            
             {artData.length === 0 ? <h1 className="text-center mt-5 mb-5 text-white">There is not art piece yet {'😌'} </h1> : (
                 artData.map(art => {
                     return (
@@ -74,8 +74,10 @@ const Arts = (props) => {
                                 <p><strong>Phone or Email:  </strong>{art.phone_email}</p>
                                 <div className=" card-link btn-group">
                                     <EditArt art={art} props={props} />
+                                   
                                 </div>
-
+                                <AddDetails description={art.long_description} 
+                                              author={art.author_image}/>
                                 <button
                                     type="button"
                                     className="card-link btn btn btn-danger"
