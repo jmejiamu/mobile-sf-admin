@@ -5,10 +5,13 @@ import AddDetails from './AddDetails';
 import NavBar from './NavBar';
 import EditArt from './EditArt';
 import { toast } from 'react-toastify';
+import Pagination from './Pagination';
 
 const Arts = (props) => {
     const [artData, setArtData] = useState([]);
     const [name, setName] = useState("");
+    const [currentPage, setCurrentPage] = useState(1);
+    const [artPerPage, setArtPerPage] = useState(4);
 
     const deleteArt = async (id) => {
         try {
@@ -35,7 +38,7 @@ const Arts = (props) => {
     };
     const getName = async () => {
         try {
-            const response = await fetch('http://localhost:3001/dashboard', {
+            const response = await fetch('http://157.245.184.202:8080/dashboard', {
                 method: 'GET',
                 headers: { token: localStorage.jwt }
             });
@@ -53,6 +56,14 @@ const Arts = (props) => {
         getName();
     }, [])
 
+    // Get the current Art piece
+    const indexOfLastArt = currentPage * artPerPage;
+    const indexOfFirstArt = indexOfLastArt - artPerPage;
+    const currentArt = artData.slice(indexOfFirstArt, indexOfLastArt);
+
+    // Change Page
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
     return (
         <div>
             <NavBar setAuth={props.setAuth} name={name} />
@@ -60,7 +71,7 @@ const Arts = (props) => {
             <AddArts />
             
             {artData.length === 0 ? <h1 className="text-center mt-5 mb-5 text-white">There is not art piece yet {'😌'} </h1> : (
-                artData.map(art => {
+                currentArt.map(art => {
                     return (
                         <div className="card mb-5" key={art.id}>
                             <div className="card-body text-left" >
@@ -89,6 +100,7 @@ const Arts = (props) => {
                     )
                 })
             )}
+            <Pagination artPerPage={artPerPage} totalArt={artData.length} paginate={paginate} />
         </div>
     )
 }

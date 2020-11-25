@@ -38,7 +38,7 @@ const Assistance = (props) => {
 
     const getName = async () => {
         try {
-            const response = await fetch('http://localhost:3001/dashboard', {
+            const response = await fetch('http://157.245.184.202:8080/dashboard', {
                 method: 'GET',
                 headers: { token: localStorage.jwt }
             });

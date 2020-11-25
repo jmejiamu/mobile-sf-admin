@@ -20,6 +20,7 @@ __NOTE:__ dashboard is under construction
 * Design
   * __Tool__
     * Figma
+    * [Design](https://www.figma.com/file/3Hocxmpo7jgZAxAwEta8kn/SFLWC)
 * JavaScript
   * __Front End__
     * React
