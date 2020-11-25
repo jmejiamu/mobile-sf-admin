@@ -2,23 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 
 const AddDetails = (props) => {
-    const [longDescriptionData, setLongDescriptionData] = useState('');
-    const [hasImage, setHasImage]  = useState(null)
+    const [longDescriptionData, setLongDescriptionData] = useState();
+   
     const [authorPictureResource, setAuthorPictureResource] = useState({ preview: "", raw: "" })
-    
+    const [currentAuthorImageName, SetcurrentAuthorImageName] = useState(props.art.author_image)
+
     const [descriptionError, setDescriptionError] = useState('');
     const [pictureError, setPictureError] = useState('');
 
-    useEffect(() => {
-        setLongDescriptionData(props.long_description)
-        if (props.author_image){
-            setHasImage(props.author_image)
-        }
-     
-        return () => {
-           // cleanup
-        }
-    }, [])
   
     const updateDataEvent = async (e) => {
         //e.preventDefault();
@@ -88,7 +79,7 @@ const AddDetails = (props) => {
             className="btn btn btn-danger mb-4  mt-5 d-flex justify-content-end"
             data-toggle="modal"
             data-target="#detailModal">
-            Edit Details</button>
+            Add More Details</button>
 
             <div className="modal" id="detailModal">
                 <div className="modal-dialog">
@@ -96,13 +87,13 @@ const AddDetails = (props) => {
 
 
                         <div className="modal-header">
-                            <h4 className="modal-title modal-style">Edit Details</h4>
+                            <h4 className="modal-title modal-style">Add Details</h4>
                             <button type="button" className="close" data-dismiss="modal">&times;</button>
                         </div>
                         <div className="modal-body modal-style">
 
                             <label htmlFor="upload-button">
-                                {hasImage && <span>is currently stored in the server</span>}
+  
                                 {authorPictureResource.preview ? (
                                     <img src={authorPictureResource.preview} alt="dummy" width="300" height="300" />) :
                                     (
@@ -121,6 +112,10 @@ const AddDetails = (props) => {
 
                             {descriptionError.length > 0 &&
                                 <span className='error' style={{ color: 'red' }}>{descriptionError} </span>}
+
+                            {currentAuthorImageName?
+                            (<div>Currently the server has author image</div>)
+                            :(<div>No author image in the server</div>) }
 
                             <input
                                 type="file"

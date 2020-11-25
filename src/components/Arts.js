@@ -87,8 +87,7 @@ const Arts = (props) => {
                                     <EditArt art={art} props={props} />
                                    
                                 </div>
-                                <AddDetails description={art.long_description} 
-                                              author={art.author_image}/>
+                                <AddDetails art={art} />
                                 <button
                                     type="button"
                                     className="card-link btn btn btn-danger"

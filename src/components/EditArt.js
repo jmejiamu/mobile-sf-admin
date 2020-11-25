@@ -5,8 +5,12 @@ const EditArt = (props) => {
     const [title, setTitle] = useState(props.art.title);
     const [cost, setCost] = useState(props.art.details); //cost
     const [contact, setContact] = useState(props.art.contact); // details
-
+    const [currentPicturePath, setCurrentPicturePaht] = useState(props.art.path);
     const [pictureResource, setPictureResource] = useState({ preview: "", raw: "" });
+
+    const [longDescriptionData, setLongDescriptionData] = useState(props.art.long_description);
+    const [authorPictureResource, setAuthorPictureResource] = useState({ preview: "", raw: "" })
+    const [currentAuthorImageName, SetcurrentAuthorImageName] = useState(props.art.author_image)
 
     const updateDataEvent = async (e) => {
 
@@ -24,6 +28,9 @@ const EditArt = (props) => {
             formData.append("details", cost)
             formData.append("contact", contact)
             formData.append("photo", pictureResource.raw)
+
+            formData.append("long_description", longDescriptionData)
+            formData.append("author_image", authorPictureResource )
 
             const response = await fetch(`http://157.245.184.202:8080/updateart/${props.art.id}`, {
                 method: 'PUT',
@@ -74,8 +81,9 @@ const EditArt = (props) => {
                             <h4 className="modal-title modal-style">Edit Event</h4>
                             <button type="button" className="close" data-dismiss="modal">&times;</button>
                         </div>
+                        
                         <label htmlFor="upload-button">
-
+                            
                             {pictureResource.preview ? (
                                 <img src={pictureResource.preview} alt="updated-pic-view" width="100%" height="300" />) :
                                 (
@@ -105,12 +113,18 @@ const EditArt = (props) => {
                                 className="form-control"
                                 value={contact}
                                 onChange={e => setContact(e.target.value)}></textarea>
-
+                            {currentPicturePath?
+                            (<div>Currently the server has image for the piece</div>)
+                            :(<div>No available image for the piece. Please upload one</div>) }
                             <input className="my-3"
                                 type="file"
                                 name="file"
                                 onChange={onFileChange}
                             />
+
+                            {currentAuthorImageName?
+                            (<div>Currently the server has author image</div>)
+                            :(<div>No author image in the server</div>) }
 
                         </div>
 
