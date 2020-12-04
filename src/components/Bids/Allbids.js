@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import NavBar from '../NavBar';
+import SearchBox from '../search-box/SearchBox';
 
 const Allbids = () => {
     const [bidData, setBidData] = useState([])
+    const [searchField, setSearchField] = useState('');
     const getBids = async () => {
         try {
             const response = await fetch('http://157.245.184.202:8080/bids')
@@ -16,23 +18,26 @@ const Allbids = () => {
     useEffect(() => {
         getBids();
     }, [])
+
+    const handleChange = (e) => {
+        setSearchField(e.target.value)
+    }
+
+    const filterBids = bidData.filter(nameUserBid =>
+        nameUserBid.title.toLowerCase().includes(searchField.toLowerCase())
+    )
     return (
         <div>
             <NavBar />
             <h1 style={{ marginTop: 60 }} className="text-white">Bids</h1>
-            {/* {bidData && bidData.map(bid => {
-                return (
-                    <div>
-                        <p className="text-white">
-                            {`Title: ${bid.title} 
-                            User Name: ${bid.name}
-                            Contact Info: ${bid.phone_email}
-                            Bid: ${bid.bid}`}</p>
-                    </div>
-                )
-            })} */}
-            <table class="table">
-                <thead class="thead-dark">
+
+            <SearchBox
+                placeholder="Enter name"
+                handleChange={handleChange}
+            />
+
+            <table className="table">
+                <thead className="thead-dark">
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Title</th>
@@ -42,7 +47,7 @@ const Allbids = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {bidData && bidData.map(bid => {
+                    {bidData && filterBids.map(bid => {
                         return (
 
                             <tr>
