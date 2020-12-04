@@ -12,6 +12,7 @@ import Login from './components/LoginLogout/Login';
 // import PageNotFound from './components/PageNotFound';
 import Register from './components/LoginLogout/Register';
 import Arts from './components/Arts';
+import Allbids from './components/Bids/Allbids';
 
 toast.configure()
 const App = () => {
@@ -50,12 +51,7 @@ const App = () => {
 
                 {/* <NavBar /> */}
                 <Switch>
-                    {/* <Route exact={true} path='/' component={Login} />
-          <Route exact path='/menu' component={MenuItems} />
-          <Route exact path='/events' component={Events} />
-          <Route exact path='/register' component={Register} />
-          <Route exact path='/assistance' component={Assistance} /> */}
-                    {/* <Route exact path='/events/:id' component={PageNotFound} /> */}
+
                     {/* '/'this would be the login  */}
                     <Route exact={true}
                         path='/'
@@ -65,6 +61,7 @@ const App = () => {
                     <Route exact path='/register' render={props => !isAuthenticated ? <Register {...props} setAuth={setAuth} /> : <Redirect to="/" />} />
                     <Route exact path='/assistance' render={props => isAuthenticated ? <Assistance {...props} setAuth={setAuth} /> : <Redirect to="/" />} />
                     <Route exact path='/arts' render={props => isAuthenticated ? <Arts {...props} setAuth={setAuth} /> : <Redirect to="/" />} />
+                    <Route exact path='/bids' render={props => isAuthenticated ? <Allbids {...props} setAuth={setAuth} /> : <Redirect to="/" />} />
                 </Switch>
 
             </div>
