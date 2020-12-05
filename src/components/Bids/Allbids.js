@@ -55,7 +55,7 @@ const Allbids = () => {
                                 <td className="text-white">{bid.title}</td>
                                 <td className="text-white" >{bid.name}</td>
                                 <td className="text-white " >{bid.phone_email}</td>
-                                <td className="text-white" >{bid.bid}</td>
+                                <td className="text-white" >{`$ ${bid.bid}`}</td>
                             </tr>
                         )
                     })
