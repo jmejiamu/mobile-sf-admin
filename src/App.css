@@ -93,3 +93,14 @@
 .login-form .c-style:hover{
   text-decoration: none;
 }
+.search-style{
+  min-height: 41px;
+  background: #f2f2f2;
+  box-shadow: none !important;
+  border: transparent;
+  border-radius: 3px;
+  padding-left: 10px;
+}
+.search-style :focus{
+  background: #e2e2e2;
+}

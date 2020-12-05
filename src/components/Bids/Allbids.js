@@ -32,7 +32,7 @@ const Allbids = () => {
             <h1 style={{ marginTop: 60 }} className="text-white">Bids</h1>
 
             <SearchBox
-                placeholder="Enter name"
+                placeholder="Artits or item name"
                 handleChange={handleChange}
             />
 
