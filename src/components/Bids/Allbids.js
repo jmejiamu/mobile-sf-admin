@@ -2,9 +2,12 @@ import React, { useEffect, useState } from 'react';
 import NavBar from '../NavBar';
 import SearchBox from '../search-box/SearchBox';
 
-const Allbids = () => {
+const Allbids = (props) => {
     const [bidData, setBidData] = useState([])
     const [searchField, setSearchField] = useState('');
+    const [name, setName] = useState('');
+
+
     const getBids = async () => {
         try {
             const response = await fetch('http://157.245.184.202:8080/bids')
@@ -15,8 +18,23 @@ const Allbids = () => {
         }
     }
 
+    const getName = async () => {
+        try {
+            const response = await fetch('http://157.245.184.202:8080/dashboard', {
+                method: 'GET',
+                headers: { token: localStorage.jwt }
+            });
+            const data = await response.json();
+            setName(data.name);
+
+        } catch (error) {
+            console.error(error.message);
+        }
+    }
+
     useEffect(() => {
         getBids();
+        getName();
     }, [])
 
     const handleChange = (e) => {
@@ -28,7 +46,7 @@ const Allbids = () => {
     )
     return (
         <div>
-            <NavBar />
+            <NavBar setAuth={props.setAuth} name={name} />
             <h1 style={{ marginTop: 60 }} className="text-white">Bids</h1>
 
             <SearchBox
