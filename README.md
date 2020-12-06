@@ -17,7 +17,7 @@ __NOTE:__ dashboard is under construction
 ![screencapture-localhost-3000-events-2020-10-06-12_50_14](https://user-images.githubusercontent.com/27458911/95252955-8f155a80-07d2-11eb-8a79-04f905771483.png)
 
 ### Bid
-Allow admin to filter the item which got the greatest bid
+Allow admin to filter items which got the greatest bid
 ![screencapture-localhost-3000-bids-2020-12-05-23_47_26](https://user-images.githubusercontent.com/27458911/101274604-77b40880-3754-11eb-921b-2c6f0f75fddb.png)
 
 ## Technologies used
