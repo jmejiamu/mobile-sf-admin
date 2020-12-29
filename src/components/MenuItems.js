@@ -31,10 +31,7 @@ const MenuItems = (props) => {
         <>
             <NavBar setAuth={props.setAuth} name={name} />
             <h1 className="dashboard">Dashboard </h1>
-            {/* <h2 className="text-white" >Welcome {` 🧑🏻‍💻 ${name}`}</h2> */}
-            {/* <button className="btn btn-primary"
-                onClick={e => logout(e)}
-            >LOGOUT</button> */}
+
             <div className="row  justify-content-between">
 
 
