@@ -21,13 +21,6 @@ const MenuItems = (props) => {
         }
     }
 
-
-    // const logout = (e) => {
-    //     e.preventDefault()
-    //     localStorage.removeItem('jwt');
-    //     props.setAuth(false)
-    //     toast.success("Logged out successfully!")
-    // }
     useEffect(() => {
         getName();
     }, [])
