@@ -12,18 +12,6 @@ const Login = (props) => {
     const submitUserData = async (e) => {
         e.preventDefault()
 
-        // axios.post('http://localhost:3001/signin', { email, password })
-        //     .then(response => {
-        //         console.log(response.json());
-        //         if (response.data.id) {
-        //             props.history.push('/menu')
-        //         }
-        //     }).catch((error) => {
-        //         alert('wrong credential')
-        //         // console.log(response)
-        //     })
-
-
         try {
             const body = {
                 email: email,
