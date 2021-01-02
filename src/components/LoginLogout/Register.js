@@ -11,19 +11,6 @@ const Register = (props) => {
 
     const submitUserData = async (e) => {
         e.preventDefault();
-        // const body = {
-        //     name: name,
-        //     email: email,
-        //     password: password
-        // }
-        // axios({
-        //     method: 'POST',
-        //     url: 'http://localhost:3001/register',
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
-        //     data: body
-        // })
 
         try {
             const body = {
