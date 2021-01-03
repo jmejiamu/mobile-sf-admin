@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import NavBar from './NavBar';
 
 const MenuItems = (props) => {
-    console.log(props);
     const [name, setName] = useState("");
 
     const getName = async () => {
