@@ -67,7 +67,7 @@ const Allbids = (props) => {
                 <tbody>
                     {bidData && filterBids.map(bid => {
                         return (
-                            <tr>
+                            <tr key={bid.id} >
                                 <th className="text-white" scope="row">{bid.id}</th>
                                 <td className="text-white">{bid.title}</td>
                                 <td className="text-white" >{bid.name}</td>
