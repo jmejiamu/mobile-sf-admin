@@ -10,7 +10,6 @@ const EditArt = (props) => {
 
     const [longDescriptionData, setLongDescriptionData] = useState(props.art.long_description);
     const [authorPictureResource, setAuthorPictureResource] = useState({ preview: "", raw: "" })
-    const [currentAuthorImageName, SetcurrentAuthorImageName] = useState(props.art.author_image)
 
     const updateDataEvent = async (e) => {
 
@@ -122,9 +121,7 @@ const EditArt = (props) => {
                                 onChange={onFileChange}
                             />
 
-                            {currentAuthorImageName?
-                            (<div>Currently the server has author image</div>)
-                            :(<div>No author image in the server</div>) }
+                            
 
                         </div>
 
