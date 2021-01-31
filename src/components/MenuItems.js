@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import NavBar from './NavBar';
 
 const MenuItems = (props) => {
-    console.log(props);
     const [name, setName] = useState("");
 
     const getName = async () => {
@@ -21,13 +20,6 @@ const MenuItems = (props) => {
         }
     }
 
-
-    // const logout = (e) => {
-    //     e.preventDefault()
-    //     localStorage.removeItem('jwt');
-    //     props.setAuth(false)
-    //     toast.success("Logged out successfully!")
-    // }
     useEffect(() => {
         getName();
     }, [])
@@ -38,10 +30,7 @@ const MenuItems = (props) => {
         <>
             <NavBar setAuth={props.setAuth} name={name} />
             <h1 className="dashboard">Dashboard </h1>
-            {/* <h2 className="text-white" >Welcome {` 🧑🏻‍💻 ${name}`}</h2> */}
-            {/* <button className="btn btn-primary"
-                onClick={e => logout(e)}
-            >LOGOUT</button> */}
+
             <div className="row  justify-content-between">
 
 

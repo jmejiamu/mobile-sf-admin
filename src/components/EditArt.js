@@ -13,14 +13,7 @@ const EditArt = (props) => {
 
     const updateDataEvent = async (e) => {
 
-        // e.preventDefault();
         try {
-            // const body = {
-            //     title: title,
-            //     deatils: cost, //cost
-            //     contact: contact, //details
-            //     photo: pictureResource.raw
-            // }
 
             const formData = new FormData();
             formData.append("title", title)

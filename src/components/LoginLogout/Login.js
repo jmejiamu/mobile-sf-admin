@@ -4,25 +4,12 @@ import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 
 const Login = (props) => {
-    // console.log(props);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
 
     const submitUserData = async (e) => {
         e.preventDefault()
-
-        // axios.post('http://localhost:3001/signin', { email, password })
-        //     .then(response => {
-        //         console.log(response.json());
-        //         if (response.data.id) {
-        //             props.history.push('/menu')
-        //         }
-        //     }).catch((error) => {
-        //         alert('wrong credential')
-        //         // console.log(response)
-        //     })
-
 
         try {
             const body = {
@@ -37,7 +24,6 @@ const Login = (props) => {
             })
 
             const data = await response.json()
-            console.log(data);
             if (data.token) {
                 localStorage.setItem('jwt', data.token)
                 props.setAuth(true);

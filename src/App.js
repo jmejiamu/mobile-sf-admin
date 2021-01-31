@@ -32,7 +32,6 @@ const App = () => {
             })
 
             const data = await response.json()
-            console.log(data);
 
             data === true ? setAuthenticated(true) : setAuthenticated(false)
         } catch (error) {
