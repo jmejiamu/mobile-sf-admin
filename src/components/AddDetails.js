@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 
 const AddDetails = (props) => {
-    const [longDescriptionData, setLongDescriptionData] = useState('');
+    const [longDescriptionData, setLongDescriptionData] = useState();
+   
     const [authorPictureResource, setAuthorPictureResource] = useState({ preview: "", raw: "" })
-    
+    const [currentAuthorImageName, SetcurrentAuthorImageName] = useState(props.art.author_image)
+
     const [descriptionError, setDescriptionError] = useState('');
     const [pictureError, setPictureError] = useState('');
+
   
     const updateDataEvent = async (e) => {
         //e.preventDefault();
@@ -90,7 +93,7 @@ const AddDetails = (props) => {
                         <div className="modal-body modal-style">
 
                             <label htmlFor="upload-button">
-
+  
                                 {authorPictureResource.preview ? (
                                     <img src={authorPictureResource.preview} alt="dummy" width="300" height="300" />) :
                                     (
@@ -109,6 +112,10 @@ const AddDetails = (props) => {
 
                             {descriptionError.length > 0 &&
                                 <span className='error' style={{ color: 'red' }}>{descriptionError} </span>}
+
+                            {currentAuthorImageName?
+                            (<div>Currently the server has author image</div>)
+                            :(<div>No author image in the server</div>) }
 
                             <input
                                 type="file"
