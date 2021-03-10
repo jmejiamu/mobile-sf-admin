@@ -36,6 +36,23 @@ const MenuItems = (props) => {
 
     return (
         <>
+        <style type="text/css">
+    {`
+    .nav {
+      //background-color: white;
+      color: white;
+    }
+
+    .nav-item {
+       font-size: 1.0rem;
+    
+    }
+
+    .nav-pills .nav-link.active{
+        background-color: red;
+    }
+    `}
+  </style>
             <NavBar setAuth={props.setAuth} name={name} />
             <h1 className="dashboard">Dashboard </h1>
 
