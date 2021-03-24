@@ -70,7 +70,7 @@ const App = () => {
                     <Route exact path='/assistance' render={props => isAuthenticated ? <Assistance {...props} setAuth={setAuth} /> : <Redirect to="/" />} />
                     <Route exact path='/arts' render={props => isAuthenticated ? <Arts {...props} setAuth={setAuth} /> : <Redirect to="/" />} />
                     <Route exact path='/bids' render={props => isAuthenticated ? <Allbids {...props} setAuth={setAuth} /> : <Redirect to="/" />} />
-                    <Route exact path='/comfirm/:email' component={Verify} />
+                    <Route exact path='/comfirm/:conformationId' component={Verify} />
                 </Switch>
 
             </div>
