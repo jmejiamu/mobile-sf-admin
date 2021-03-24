@@ -6,20 +6,20 @@ const endpoint = 'http://localhost:3001';
 
 const Verify = (props) =>{
     const path = window.location.pathname;
-    const lastItem = path.substring(path.lastIndexOf('/') + 1);
+    const confirmationId = path.substring(path.lastIndexOf('/') + 1);
  
     useEffect(()=>{
         console.log("useeffect");
-        console.log("verify_account ", lastItem);
+        console.log("verify_account ", confirmationId);
         
         const verify = async ()=>{
-            const verify_account = await fetch(`${endpoint}/verifyEmail/${lastItem}`,{
+            const verify_account = await fetch(`${endpoint}/verifyEmail/${confirmationId}`,{
                 method: "GET"
             })
             
             const data = await verify_account.json();
             
-            if (data.token) {
+            if (data.msg.length !== 0) {
                     // document.cookie = `token=${data.token}`
                     toast.success(data.msg)
             } else {
