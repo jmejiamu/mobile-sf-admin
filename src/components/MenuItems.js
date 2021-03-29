@@ -4,6 +4,7 @@ import NavBar from './NavBar';
 
 const MenuItems = (props) => {
     const [name, setName] = useState("");
+    console.log("setIfRegister in menu,", props.setIfRegister);
 
     const getName = async () => {
         try {
@@ -28,7 +29,7 @@ const MenuItems = (props) => {
 
     return (
         <>
-            <NavBar setAuth={props.setAuth} name={name} />
+            <NavBar setAuth={props.setAuth} setIfRegister={props.setIfRegister} name={name} />
             <h1 className="dashboard">Dashboard </h1>
 
             <div className="row  justify-content-between">

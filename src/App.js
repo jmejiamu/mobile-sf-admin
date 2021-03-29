@@ -64,7 +64,7 @@ const App = () => {
                     <Route exact={true}
                         path='/'
                         render={props => !isAuthenticated ? <Login {...props} setAuth={setAuth} /> : <Redirect to="/menu" />} />
-                    <Route exact path='/menu' render={props => isAuthenticated ? < MenuItems {...props} setAuth={setAuth} /> : <Redirect to="/" />} />
+                    <Route exact path='/menu' render={props => isAuthenticated ? < MenuItems {...props} setAuth={setAuth} setIfRegister={setIfRegister}/> : <Redirect to="/" />} />
                     <Route exact path='/events' render={props => isAuthenticated ? <Events {...props} setAuth={setAuth} /> : <Redirect to="/" />} />
                     <Route exact path='/register' render={props => !ifRegister  ? <Register {...props} setIfRegister={setIfRegister}/> : <Redirect to="/" />} />
                     <Route exact path='/assistance' render={props => isAuthenticated ? <Assistance {...props} setAuth={setAuth} /> : <Redirect to="/" />} />
