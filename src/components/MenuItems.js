@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+
+import Arts from './Arts';
+import Events from './Events';
+import Assistance from './Assisstance/Assistance';
+import Allbids from './Bids/Allbids';
 import NavBar from './NavBar';
+
+import { Button ,Tab ,Nav, Row, Col} from 'react-bootstrap';
+
 
 const MenuItems = (props) => {
     const [name, setName] = useState("");
@@ -29,49 +37,69 @@ const MenuItems = (props) => {
 
     return (
         <>
+
             <NavBar setAuth={props.setAuth} setIfRegister={props.setIfRegister} name={name} />
+
+        <style type="text/css">
+    {`
+    .nav {
+      //background-color: white;
+      color: white;
+    }
+
+    .nav-item {
+       font-size: 1.0rem;
+    
+    }
+
+    .nav-pills .nav-link.active{
+        background-color: red;
+    }
+    `}
+  </style>
+            <NavBar setAuth={props.setAuth} name={name} />
+
             <h1 className="dashboard">Dashboard </h1>
 
-            <div className="row  justify-content-between">
 
 
-                <div className="card mb-5" >
-                    {/* <img class="card-img-top" src="..." alt="Card image cap"> */}
-                    <div className="card-body" style={{ width: '400px' }} >
-                        <h5 className="card-title">Events</h5>
-                        <p className="card-text ">Add, delete, or edit an event</p>
-                        <Link to="/events" className="btn btn-danger">Go to events</Link>
-                    </div>
-                </div>
+            <Tab.Container id="left-tabs" defaultActiveKey="first">
+            <Row>
+                <Col sm={3}>
+                <Nav variant="pills" className="flex-column">
+                    <Nav.Item>
+                    <Nav.Link eventKey="first">Arts</Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                    <Nav.Link eventKey="second">Events</Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                    <Nav.Link eventKey="third">Assistance</Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                    <Nav.Link eventKey="fourth">Bids</Nav.Link>
+                    </Nav.Item>
+                </Nav>
+                </Col>
+                <Col sm={9}>
+                <Tab.Content>
+                    <Tab.Pane eventKey="first">
+                    <Arts />
+                    </Tab.Pane>
+                    <Tab.Pane eventKey="second">
+                    <Events />
+                    </Tab.Pane>
+                    <Tab.Pane eventKey="third">
+                    <Assistance />
+                    </Tab.Pane>
+                    <Tab.Pane eventKey="fourth">
+                    <Allbids />
+                    </Tab.Pane>
+                </Tab.Content>
+                </Col>
+            </Row>
+            </Tab.Container>
 
-                <div className="card mb-5" >
-                    {/* <img class="card-img-top" src="..." alt="Card image cap"> */}
-                    <div className="card-body" style={{ width: '400px' }}>
-                        <h5 className="card-title">Assistance </h5>
-                        <p className="card-text">Description coming...</p>
-                        <Link to="/assistance" className="btn btn-danger">Go to complaints</Link>
-                    </div>
-                </div>
-
-                <div className="card mb-5" >
-                    {/* <img class="card-img-top" src="..." alt="Card image cap"> */}
-                    <div className="card-body" style={{ width: '400px' }}>
-                        <h5 className="card-title">Art</h5>
-                        <p className="card-text">Update art information</p>
-                        <Link to="/arts" className="btn btn-danger">Go to events</Link>
-
-                    </div>
-                </div>
-
-                <div className="card mb-5 " >
-                    {/* <img class="card-img-top" src="..." alt="Card image cap"> */}
-                    <div className="card-body" style={{ width: '400px' }}>
-                        <h5 className="card-title">Bids</h5>
-                        <p className="card-text">Art auction winners</p>
-                        <Link to="/bids" className="btn btn-danger">Go to all bids</Link>
-                    </div>
-                </div>
-            </div>
 
         </>
     )
