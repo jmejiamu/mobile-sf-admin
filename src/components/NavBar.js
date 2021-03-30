@@ -10,6 +10,7 @@ const NavBar = (props) => {
         e.preventDefault()
         localStorage.removeItem('jwt')
         props.setAuth(false)
+        props.setIfRegister(false)
         toast.success(' ✔️ Logged out Successfully!')
     }
 
