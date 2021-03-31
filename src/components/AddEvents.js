@@ -6,6 +6,10 @@ import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import Moment from 'moment';
 import { getDefaultNormalizer } from '@testing-library/react';
+import endpoint from './endpoint/Endpoint';
+
+const endpointUrl = endpoint.url;
+
 
 const AddEvents = (props) => {
     const [descriptionData, setDescriptionData] = useState('');
@@ -116,7 +120,7 @@ const AddEvents = (props) => {
             }
 
             if (valid === true) {
-                const response = await fetch(`http://157.245.184.202:8080/addEvent`, {
+                const response = await fetch(`${endpointUrl}/addEvent`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(body)

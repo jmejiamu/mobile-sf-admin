@@ -2,6 +2,10 @@ import React, { useEffect, useState } from 'react';
 import NavBar from '../NavBar';
 import SearchBox from '../search-box/SearchBox';
 
+import endpoint from '../endpoint/Endpoint';
+
+const endpointUrl = endpoint.url;
+
 const Allbids = (props) => {
     const [bidData, setBidData] = useState([])
     const [searchField, setSearchField] = useState('');
@@ -10,7 +14,7 @@ const Allbids = (props) => {
 
     const getBids = async () => {
         try {
-            const response = await fetch('http://157.245.184.202:8080/bids')
+            const response = await fetch(`${endpointUrl}/bids`)
             const jsonData = await response.json()
             setBidData(jsonData)
         } catch (error) {
@@ -20,7 +24,7 @@ const Allbids = (props) => {
 
     const getName = async () => {
         try {
-            const response = await fetch('http://157.245.184.202:8080/dashboard', {
+            const response = await fetch(`${endpointUrl}/dashboard`, {
                 method: 'GET',
                 headers: { token: localStorage.jwt }
             });

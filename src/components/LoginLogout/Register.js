@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { Link, Redirect } from 'react-router-dom';
 
-
-const endpoint = 'http://localhost:3001';
-//const endpoint = 'http://157.245.184.202:8080';
+import endpoint from '../endpoint/Endpoint';
+// const endpoint = 'http://localhost:3001';
+// //const endpoint = 'http://157.245.184.202:8080';
+const endpointUrl = endpoint.url;
 
 const Register = (props) => {
 
@@ -22,7 +23,7 @@ const Register = (props) => {
                 password: password
             }
 
-            const response = await fetch(`${endpoint}/register`, {
+            const response = await fetch(`${endpointUrl}/register`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

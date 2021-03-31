@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
+import endpoint from './endpoint/Endpoint';
+
+const endpointUrl = endpoint.url;
 
 const AddDetails = (props) => {
     const [longDescriptionData, setLongDescriptionData] = useState();
@@ -23,7 +26,7 @@ const AddDetails = (props) => {
             formData.append("photo", authorPictureResource.raw);
 
             try {
-                await fetch("http://157.245.184.202:8080/addetail", {
+                await fetch(`${endpointUrl}/addetail`, {
                     method: "POST",
                     headers: {
                         //remove content type for the system to generate boundary parameter

@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 
+import endpoint from './endpoint/Endpoint';
+
+const endpointUrl = endpoint.url;
+
 const EditArt = (props) => {
     const [title, setTitle] = useState(props.art.title);
     const [cost, setCost] = useState(props.art.details); //cost
@@ -24,7 +28,7 @@ const EditArt = (props) => {
             formData.append("long_description", longDescriptionData)
             formData.append("author_image", authorPictureResource )
 
-            const response = await fetch(`http://157.245.184.202:8080/updateart/${props.art.id}`, {
+            const response = await fetch(`${endpointUrl}/updateart/${props.art.id}`, {
                 method: 'PUT',
                 headers: {
                     // 'Content-Type': 'application/json'

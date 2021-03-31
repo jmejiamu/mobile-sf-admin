@@ -3,8 +3,14 @@ import React, { useState, } from 'react';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 
-const endpoint = 'http://localhost:3001';
+import endpoint from '../endpoint/Endpoint';
+
+//const endpoint = 'http://localhost:3001';
 //const endpoint = 'http://157.245.184.202:8080';
+
+const endpointUrl = endpoint.url;
+
+console.log("endpoint,", endpointUrl);
 
 const Login = (props) => {
     const [email, setEmail] = useState('');
@@ -20,7 +26,7 @@ const Login = (props) => {
                 password: password
             }
 
-            const response = await fetch(`${endpoint}/signin`, {
+            const response = await fetch(`${endpointUrl}/signin`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(body)

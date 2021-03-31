@@ -57,7 +57,7 @@ const MenuItems = (props) => {
     }
     `}
   </style>
-            <NavBar setAuth={props.setAuth} name={name} />
+            <NavBar setAuth={props.setAuth} setIfRegister={props.setIfRegister} name={name} />
 
             <h1 className="dashboard">Dashboard </h1>
 

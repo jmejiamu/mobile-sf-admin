@@ -14,12 +14,15 @@ import Register from './components/LoginLogout/Register';
 import Arts from './components/Arts';
 import Allbids from './components/Bids/Allbids';
 import Verify from './components/LoginLogout/Verify';
-
+import endpoint from './components/endpoint/Endpoint';
 
 toast.configure()
 
-const endpoint = 'http://localhost:3001';
-//const endpoint = 'http://157.245.184.202:8080';
+// const endpoint = 'http://localhost:3001';
+// //const endpoint = 'http://157.245.184.202:8080';
+
+
+const endpointUrl = endpoint.url;
 
 const App = () => {
 
@@ -33,7 +36,7 @@ const App = () => {
 
     const isAuth = async () => {
         try {
-            const response = await fetch(`${endpoint}/isverify`, {
+            const response = await fetch(`${endpointUrl}/isverify`, {
                 method: 'GET',
                 headers: { token: localStorage.jwt }
             })

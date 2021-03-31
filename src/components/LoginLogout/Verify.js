@@ -2,7 +2,10 @@ import React, {useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-const endpoint = 'http://localhost:3001';
+import endpoint from '../endpoint/Endpoint';
+// const endpoint = 'http://localhost:3001';
+
+const endpointUrl = endpoint.url;
 
 const Verify = (props) =>{
     const path = window.location.pathname;
@@ -13,7 +16,7 @@ const Verify = (props) =>{
         console.log("verify_account ", confirmationId);
         
         const verify = async ()=>{
-            const verify_account = await fetch(`${endpoint}/verifyEmail/${confirmationId}`,{
+            const verify_account = await fetch(`${endpointUrl}/verifyEmail/${confirmationId}`,{
                 method: "GET"
             })
             

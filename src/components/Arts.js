@@ -7,6 +7,9 @@ import EditArt from './EditArt';
 import EditCloseBidDate from './EditCloseBidDate';
 import { toast } from 'react-toastify';
 import Pagination from './Pagination';
+import endpoint from './endpoint/Endpoint';
+
+const endpointUrl = endpoint.url;
 
 const Arts = (props) => {
     const [artData, setArtData] = useState([]);
@@ -16,7 +19,7 @@ const Arts = (props) => {
 
     const deleteArt = async (id) => {
         try {
-            const deleteData = await fetch(`http://157.245.184.202:8080/deleteart/${id}`, {
+            const deleteData = await fetch(`${endpointUrl}/deleteart/${id}`, {
                 method: "DELETE"
             })
             const data = await deleteData.json();
@@ -30,7 +33,7 @@ const Arts = (props) => {
 
     const getArt = async () => {
         try {
-            const response = await fetch('http://157.245.184.202:8080/arts')
+            const response = await fetch(`${endpointUrl}/arts`)
             const jsonData = await response.json()
             setArtData(jsonData);
         } catch (error) {
@@ -39,7 +42,7 @@ const Arts = (props) => {
     };
     const getName = async () => {
         try {
-            const response = await fetch('http://157.245.184.202:8080/dashboard', {
+            const response = await fetch(`${endpointUrl}/dashboard`, {
                 method: 'GET',
                 headers: { token: localStorage.jwt }
             });
