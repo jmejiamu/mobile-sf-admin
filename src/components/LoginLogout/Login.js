@@ -10,7 +10,7 @@ import endpoint from '../endpoint/Endpoint';
 
 const endpointUrl = endpoint.url;
 
-console.log("endpoint,", endpointUrl);
+console.log("endpoint login,", endpointUrl);
 
 const Login = (props) => {
     const [email, setEmail] = useState('');
@@ -20,11 +20,15 @@ const Login = (props) => {
     const submitUserData = async (e) => {
         e.preventDefault()
 
+        
+
         try {
             const body = {
                 email: email,
                 password: password
             }
+
+            console.log("login email,", email);
 
             const response = await fetch(`${endpointUrl}/signin`, {
                 method: 'POST',
@@ -32,7 +36,12 @@ const Login = (props) => {
                 body: JSON.stringify(body)
             })
 
+            console.log("login response,", response);
+
             const data = await response.json()
+
+            console.log("login email,", data);
+
 
             if (data.token) {
                 localStorage.setItem('jwt', data.token)

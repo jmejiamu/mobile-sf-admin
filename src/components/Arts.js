@@ -63,11 +63,14 @@ const Arts = (props) => {
     // Get the current Art piece
     const indexOfLastArt = currentPage * artPerPage;
     const indexOfFirstArt = indexOfLastArt - artPerPage;
+
+
     const currentArt = artData.slice(indexOfFirstArt, indexOfLastArt);
 
     // Change Page
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
+    
     return (
         <div>
             <NavBar setAuth={props.setAuth} name={name} />

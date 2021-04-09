@@ -1,5 +1,6 @@
 const endpoint = {
-    url: 'http://localhost:3001'
+    url: 'http://157.245.184.202:8080'
 }
 
+//http://157.245.184.202:8080
 export default endpoint;
