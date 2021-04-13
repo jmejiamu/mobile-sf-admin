@@ -1,3 +1,5 @@
+Old repository: https://github.com/jmejiamu/mobile-sf-admin
+
 # SF Living Wage Coalition
 Content Management System for the mobile app. This will allow admins to update, delete and edit data that will be shown on the mobile app.
 
