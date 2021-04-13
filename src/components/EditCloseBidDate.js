@@ -19,7 +19,7 @@ const EditCloseBidDate = (props) => {
                 category: category
             }
 
-            const response = await fetch(`http://157.245.184.202:8080/updateCloseDate`, {
+            const response = await fetch(`http://localhost:3001/updateCloseDate`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(body)

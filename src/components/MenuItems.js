@@ -33,30 +33,30 @@ const MenuItems = (props) => {
     }, [])
 
 
-
+    
     return (
         <>
+        
         <style type="text/css">
-    {`
-    .nav {
-      //background-color: white;
-      color: white;
-    }
+        {`
+        .nav {
+        //background-color: white;
+        color: white;
+        }
 
-    .nav-item {
-       font-size: 1.0rem;
-    
-    }
+        .nav-item {
+        font-size: 1.0rem;
+        
+        }
 
-    .nav-pills .nav-link.active{
-        background-color: red;
-    }
-    `}
-  </style>
+        .nav-pills .nav-link.active{
+            background-color: red;
+        }
+7
+        `}
+    </style>
             <NavBar setAuth={props.setAuth} name={name} />
             <h1 className="dashboard">Dashboard </h1>
-
-
 
             <Tab.Container id="left-tabs" defaultActiveKey="first">
             <Row>
