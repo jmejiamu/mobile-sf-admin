@@ -3,8 +3,8 @@ import { toast } from 'react-toastify';
 import { Link, Redirect } from 'react-router-dom';
 
 
-const endpoint = 'http://localhost:3001';
-//const endpoint = 'http://157.245.184.202:8080';
+// const endpoint = 'http://localhost:3001';
+const endpoint = 'http://157.245.184.202:8080';
 
 const Register = (props) => {
 
@@ -29,13 +29,13 @@ const Register = (props) => {
                 },
                 body: JSON.stringify(body)
             })
-            
+
             const data = await response.json()
             console.log("data in resgister,", data.message);
-            
-            if(data.message === undefined){
+
+            if (data.message === undefined) {
                 toast.error(data);
-            }else if(data.message.length > 0){
+            } else if (data.message.length > 0) {
                 props.setIfRegister(true);
                 toast.success(data.message);
             }
@@ -48,7 +48,7 @@ const Register = (props) => {
             //     props.setAuth(false)
             //     toast.error(data)
             // }
-            
+
         } catch (error) {
             console.error(error.message);
         }

@@ -18,8 +18,8 @@ import Verify from './components/LoginLogout/Verify';
 
 toast.configure()
 
-const endpoint = 'http://localhost:3001';
-//const endpoint = 'http://157.245.184.202:8080';
+// const endpoint = 'http://localhost:3001';
+const endpoint = 'http://157.245.184.202:8080';
 
 const App = () => {
 
@@ -64,9 +64,9 @@ const App = () => {
                     <Route exact={true}
                         path='/'
                         render={props => !isAuthenticated ? <Login {...props} setAuth={setAuth} /> : <Redirect to="/menu" />} />
-                    <Route exact path='/menu' render={props => isAuthenticated ? < MenuItems {...props} setAuth={setAuth} setIfRegister={setIfRegister}/> : <Redirect to="/" />} />
+                    <Route exact path='/menu' render={props => isAuthenticated ? < MenuItems {...props} setAuth={setAuth} setIfRegister={setIfRegister} /> : <Redirect to="/" />} />
                     <Route exact path='/events' render={props => isAuthenticated ? <Events {...props} setAuth={setAuth} /> : <Redirect to="/" />} />
-                    <Route exact path='/register' render={props => !ifRegister  ? <Register {...props} setIfRegister={setIfRegister}/> : <Redirect to="/" />} />
+                    <Route exact path='/register' render={props => !ifRegister ? <Register {...props} setIfRegister={setIfRegister} /> : <Redirect to="/" />} />
                     <Route exact path='/assistance' render={props => isAuthenticated ? <Assistance {...props} setAuth={setAuth} /> : <Redirect to="/" />} />
                     <Route exact path='/arts' render={props => isAuthenticated ? <Arts {...props} setAuth={setAuth} /> : <Redirect to="/" />} />
                     <Route exact path='/bids' render={props => isAuthenticated ? <Allbids {...props} setAuth={setAuth} /> : <Redirect to="/" />} />
