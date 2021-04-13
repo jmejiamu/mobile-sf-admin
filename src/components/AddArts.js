@@ -93,6 +93,7 @@ const AddArts = (props) => {
 
     return (
         <div>
+
             <button
                 type="button"
                 className="btn btn btn-danger mb-4  mt-5 d-flex justify-content-end"
@@ -120,7 +121,7 @@ const AddArts = (props) => {
 
                                     )}
                             </label>
-                            
+
                             <label></label>
                             <textarea
                                 type="text"

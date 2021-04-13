@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
+
+// const endpoint = 'http://localhost:3001';
+const endpoint = 'http://157.245.184.202:8080';
 
 const Register = (props) => {
 
@@ -19,24 +22,33 @@ const Register = (props) => {
                 password: password
             }
 
-            const response = await fetch('http://157.245.184.202:8080/register', {
+            const response = await fetch(`${endpoint}/register`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(body)
             })
+
             const data = await response.json()
-            console.log(data);
-            if (data.token) {
-                // document.cookie = `token=${data.token}`
-                localStorage.setItem('jwt', data.token)
-                props.setAuth(true)
-                toast.success("Register Successfully!")
-            } else {
-                props.setAuth(false)
-                toast.error(data)
+            console.log("data in resgister,", data.message);
+
+            if (data.message === undefined) {
+                toast.error(data);
+            } else if (data.message.length > 0) {
+                props.setIfRegister(true);
+                toast.success(data.message);
             }
+            // if (data.token) {
+            //     // document.cookie = `token=${data.token}`
+            //     localStorage.setItem('jwt', data.token)
+            //     props.setAuth(true)
+            //     toast.success("Register Successfully!")
+            // } else {
+            //     props.setAuth(false)
+            //     toast.error(data)
+            // }
+
         } catch (error) {
             console.error(error.message);
         }

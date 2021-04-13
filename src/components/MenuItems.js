@@ -12,6 +12,7 @@ import { Button ,Tab ,Nav, Row, Col} from 'react-bootstrap';
 
 const MenuItems = (props) => {
     const [name, setName] = useState("");
+    console.log("setIfRegister in menu,", props.setIfRegister);
 
     const getName = async () => {
         try {
@@ -56,6 +57,7 @@ const MenuItems = (props) => {
         `}
     </style>
             <NavBar setAuth={props.setAuth} name={name} />
+
             <h1 className="dashboard">Dashboard </h1>
 
             <Tab.Container id="left-tabs" defaultActiveKey="first">

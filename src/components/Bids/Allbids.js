@@ -54,6 +54,7 @@ const Allbids = (props) => {
                 handleChange={handleChange}
             />
 
+
             <table className="table">
                 <thead className="thead-dark">
                     <tr>
