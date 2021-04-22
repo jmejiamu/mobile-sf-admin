@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import Arts from './Arts';
+import Cds from './Cds';
+import Dvds from './Dvds';
+import Photos from './Photos';
+import Pictures from './Pictures';
 import Events from './Events';
 import Assistance from './Assisstance/Assistance';
 import Allbids from './Bids/Allbids';
@@ -53,7 +57,7 @@ const MenuItems = (props) => {
         .nav-pills .nav-link.active{
             background-color: red;
         }
-7
+
         `}
     </style>
             <NavBar setAuth={props.setAuth} name={name} />
@@ -67,6 +71,7 @@ const MenuItems = (props) => {
                     <Nav.Item>
                     <Nav.Link eventKey="first">Arts</Nav.Link>
                     </Nav.Item>
+                   
                     <Nav.Item>
                     <Nav.Link eventKey="second">Events</Nav.Link>
                     </Nav.Item>
@@ -76,6 +81,19 @@ const MenuItems = (props) => {
                     <Nav.Item>
                     <Nav.Link eventKey="fourth">Bids</Nav.Link>
                     </Nav.Item>
+                    <Nav.Item>
+                    <Nav.Link eventKey="fifth">Cds</Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                    <Nav.Link eventKey="sixth">Dvds</Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                    <Nav.Link eventKey="seventh">Photos</Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                    <Nav.Link eventKey="eigth">Pictures</Nav.Link>
+                    </Nav.Item>
+                   
                 </Nav>
                 </Col>
                 <Col sm={9}>
@@ -91,6 +109,18 @@ const MenuItems = (props) => {
                     </Tab.Pane>
                     <Tab.Pane eventKey="fourth">
                     <Allbids />
+                    </Tab.Pane>
+                    <Tab.Pane eventKey="fifth">
+                    <Cds />
+                    </Tab.Pane>
+                    <Tab.Pane eventKey="sixth">
+                    <Dvds />
+                    </Tab.Pane>
+                    <Tab.Pane eventKey="seventh">
+                    <Photos />
+                    </Tab.Pane>
+                    <Tab.Pane eventKey="eigth">
+                    <Pictures />
                     </Tab.Pane>
                 </Tab.Content>
                 </Col>

@@ -10,9 +10,15 @@ import Pagination from './Pagination';
 
 const Arts = (props) => {
     const [artData, setArtData] = useState([]);
+    const [cdData, setCdData] = useState([]);
+    const [dvdData, setDvdData] = useState([]);
+    const [picturesData, setPicturesData] = useState([]);
+    const [photoData, setPhotoData] = useState([]);
     const [name, setName] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
     const [artPerPage, setArtPerPage] = useState(4);
+
+    const [currentSection, setCurrentSection] = useState(0);
 
     const deleteArt = async (id) => {
         try {
@@ -72,7 +78,7 @@ const Arts = (props) => {
             <AddArts />
             <EditCloseBidDate />
 
-            {artData.length === 0 ? <h1 className="text-center mt-5 mb-5 text-white">There is not art piece yet {'😌'} </h1> : (
+            {artData.length === 0 && currentSection == 0 ? <h1 className="text-center mt-5 mb-5 text-white">There is not art piece yet {'😌'} </h1> : (
                 currentArt.map(art => {
                     return (
                         <div className="card mb-5" key={art.id}>
