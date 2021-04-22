@@ -104,7 +104,7 @@ const Picturess = (props) => {
                     )
                 })
             )}
-            <Pagination picturesPerPage={picturesPerPage} totalPictures={picturesData.length} paginate={paginate} />
+            <Pagination artPerPage={picturesPerPage} totalArt={picturesData.length} paginate={paginate} />
         </div>
     )
 }

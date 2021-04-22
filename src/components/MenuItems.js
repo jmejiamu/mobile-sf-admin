@@ -91,7 +91,7 @@ const MenuItems = (props) => {
                     <Nav.Link eventKey="seventh">Photos</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                    <Nav.Link eventKey="eigth">Pictures</Nav.Link>
+                    <Nav.Link eventKey="eigth">Books</Nav.Link>
                     </Nav.Item>
                    
                 </Nav>

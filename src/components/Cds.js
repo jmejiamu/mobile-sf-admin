@@ -104,7 +104,7 @@ const Cds = (props) => {
                     )
                 })
             )}
-            <Pagination cdPerPage={cdPerPage} totalCd={cdData.length} paginate={paginate} />
+            <Pagination artPerPage={cdPerPage} totalArt={cdData.length} paginate={paginate} />
         </div>
     )
 }
