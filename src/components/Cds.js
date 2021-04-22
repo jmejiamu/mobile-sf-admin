@@ -74,11 +74,12 @@ const Cds = (props) => {
             <h1 className="text-white">Cd Section</h1>
             {/* <AddCds /> */}
             {/* <EditCloseBidDate /> */}
-
+            <div class="container">  <div className="row" >
             {cdData.length === 0 ? <h1 className="text-center mt-5 mb-5 text-white">There is not Cd piece yet {'😌'} </h1> : (
                 currentCd.map(cd => {
                     return (
-                        <div className="card mb-5" key={cd.id}>
+                      
+                        <div className="card mb-5  col-sm" key={cd.id}>
                             <div className="card-body text-left" >
                                 <img className="card-img-top" src={cd.path} alt="user-pic" />
                                 <h5 className="card-title" >{cd.title}</h5>
@@ -99,12 +100,15 @@ const Cds = (props) => {
                                     onClick={() => deleteCd(cd.id)}
                                 >Delete</button>
                             </div>
-
+                           
                         </div>
                     )
                 })
             )}
+            </div>
+            </div>
             <Pagination artPerPage={cdPerPage} totalArt={cdData.length} paginate={paginate} />
+            
         </div>
     )
 }

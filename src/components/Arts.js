@@ -77,7 +77,7 @@ const Arts = (props) => {
             <h1 className="text-white">Art Section</h1>
             <AddArts />
             <EditCloseBidDate />
-
+            
             {artData.length === 0 && currentSection == 0 ? <h1 className="text-center mt-5 mb-5 text-white">There is not art piece yet {'😌'} </h1> : (
                 currentArt.map(art => {
                     return (
