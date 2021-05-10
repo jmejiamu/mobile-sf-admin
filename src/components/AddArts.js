@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
+import Endpoint from '../shared/Endpoint/Endpoint';
+
+const baseUrl = Endpoint.url;
 
 const AddArts = (props) => {
     const [artTitle, setArtTitle] = useState('')
@@ -29,7 +32,7 @@ const AddArts = (props) => {
             formData.append("photo", pictureResource.raw);
             formData.append("minimunbid", bidData);
             try {
-                await fetch("http://157.245.184.202:8080/addart", {
+                await fetch(`${baseUrl}/addart`, {
                     method: "POST",
                     headers: {
                         //remove content type for the system to generate boundary parameter

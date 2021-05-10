@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import Endpoint from '../shared/Endpoint/Endpoint';
+
+const baseUrl = Endpoint.url;
 
 const EditEvent = (props) => {
     const [descriptionData, setDescriptionData] = useState(props.event.description);
@@ -21,7 +24,7 @@ const EditEvent = (props) => {
                 end_date: endData,
             }
 
-            const response = await fetch(`http://157.245.184.202:8080/updateEvent/${props.event.id}`, {
+            const response = await fetch(`${baseUrl}/updateEvent/${props.event.id}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(body)

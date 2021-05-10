@@ -3,7 +3,9 @@ import { toast } from 'react-toastify';
 
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
+import Endpoint from '../shared/Endpoint';
 
+const baseUrl = Endpoint.url;
 
 
 const EditCloseBidDate = (props) => {
@@ -19,7 +21,7 @@ const EditCloseBidDate = (props) => {
                 category: category
             }
 
-            const response = await fetch(`http://localhost:3001/updateCloseDate`, {
+            const response = await fetch(`${baseUrl}/updateCloseDate`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(body)

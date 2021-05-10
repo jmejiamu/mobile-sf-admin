@@ -4,6 +4,9 @@ import EditEvent from './EditEvents';
 import AddEvents from './AddEvents';
 import NavBar from './NavBar';
 import { toast } from 'react-toastify';
+import Endpoint from '../shared/Endpoint';
+
+const baseUrl = Endpoint.url;
 
 const Events = (props) => {
     console.log('Events-props', props);
@@ -12,7 +15,7 @@ const Events = (props) => {
 
     const deleteEvents = async (id) => {
         try {
-            const deleteData = await fetch(`http://157.245.184.202:8080/deleteEvent/${id}`, {
+            const deleteData = await fetch(`${baseUrl}/deleteEvent/${id}`, {
                 method: 'DELETE'
             })
             const data = await deleteData.json();
@@ -25,7 +28,7 @@ const Events = (props) => {
 
     const getEvents = async () => {
         try {
-            const response = await fetch('http://157.245.184.202:8080/calendar')
+            const response = await fetch(`${baseUrl}/calendar`)
             const jsonData = await response.json()
 
             setEventsData(jsonData);
@@ -37,7 +40,7 @@ const Events = (props) => {
 
     const getName = async () => {
         try {
-            const response = await fetch('http://157.245.184.202:8080/dashboard', {
+            const response = await fetch(`${baseUrl}/dashboard`, {
                 method: 'GET',
                 headers: { token: localStorage.jwt }
             });

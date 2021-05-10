@@ -10,6 +10,9 @@ import Events from './Events';
 import Assistance from './Assisstance/Assistance';
 import Allbids from './Bids/Allbids';
 import NavBar from './NavBar';
+import Endpoint from '../shared/Endpoint';
+
+const baseUrl = Endpoint.url;
 
 import { Button ,Tab ,Nav, Row, Col} from 'react-bootstrap';
 
@@ -20,7 +23,7 @@ const MenuItems = (props) => {
 
     const getName = async () => {
         try {
-            const response = await fetch('http://157.245.184.202:8080/dashboard', {
+            const response = await fetch(`${baseUrl}/dashboard`, {
                 method: 'GET',
                 headers: { token: localStorage.jwt }
             });

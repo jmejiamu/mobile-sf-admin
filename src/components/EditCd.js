@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
+import Endpoint from '../shared/Endpoint/Endpoint';
+
+const baseUrl = Endpoint.url;
 
 const EditCd = (props) => {
     const [title, setTitle] = useState(props.cd.title);
@@ -24,7 +27,7 @@ const EditCd = (props) => {
             formData.append("long_description", longDescriptionData)
             formData.append("author_image", authorPictureResource )
 
-            const response = await fetch(`http://157.245.184.202:8080/updateCd/${props.cd.id}`, {
+            const response = await fetch(`${baseUrl}/updateCd/${props.cd.id}`, {
                 method: 'PUT',
                 headers: {
                     // 'Content-Type': 'application/json'

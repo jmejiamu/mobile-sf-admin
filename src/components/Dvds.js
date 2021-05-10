@@ -7,6 +7,9 @@ import NavBar from './NavBar';
 import EditCloseBidDate from './EditCloseBidDate';
 import { toast } from 'react-toastify';
 import Pagination from './Pagination';
+import Endpoint from '../shared/Endpoint/Endpoint';
+
+const baseUrl = Endpoint.url;
 
 const Dvds = (props) => {
 
@@ -19,7 +22,7 @@ const Dvds = (props) => {
 
     const deleteDvd = async (id) => {
         try {
-            const deleteData = await fetch(`http://157.245.184.202:8080/deleteDvd/${id}`, {
+            const deleteData = await fetch(`${baseUrl}/deleteDvd/${id}`, {
                 method: "DELETE"
             })
             const data = await deleteData.json();
@@ -33,7 +36,7 @@ const Dvds = (props) => {
 
     const getDvd = async () => {
         try {
-            const response = await fetch('http://157.245.184.202:8080/dvds')
+            const response = await fetch(`${baseUrl}/dvds`)
             const jsonData = await response.json()
             setDvdData(jsonData);
         } catch (error) {
@@ -42,7 +45,7 @@ const Dvds = (props) => {
     };
     const getName = async () => {
         try {
-            const response = await fetch('http://157.245.184.202:8080/dashboard', {
+            const response = await fetch(`${baseUrl}/dashboard`, {
                 method: 'GET',
                 headers: { token: localStorage.jwt }
             });

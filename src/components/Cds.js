@@ -7,6 +7,9 @@ import EditCd from './EditCd';
 import EditCloseBidDate from './EditCloseBidDate';
 import { toast } from 'react-toastify';
 import Pagination from './Pagination';
+import Endpoint from '../shared/Endpoint/Endpoint';
+
+const baseUrl = Endpoint.url;
 
 const Cds = (props) => {
 
@@ -19,7 +22,7 @@ const Cds = (props) => {
 
     const deleteCd = async (id) => {
         try {
-            const deleteData = await fetch(`http://157.245.184.202:8080/deletecd/${id}`, {
+            const deleteData = await fetch(`${baseUrl}/deletecd/${id}`, {
                 method: "DELETE"
             })
             const data = await deleteData.json();
@@ -33,7 +36,7 @@ const Cds = (props) => {
 
     const getCd = async () => {
         try {
-            const response = await fetch('http://157.245.184.202:8080/cds')
+            const response = await fetch(`${baseUrl}/cds`)
             const jsonData = await response.json()
             setCdData(jsonData);
         } catch (error) {
@@ -42,7 +45,7 @@ const Cds = (props) => {
     };
     const getName = async () => {
         try {
-            const response = await fetch('http://157.245.184.202:8080/dashboard', {
+            const response = await fetch(`${baseUrl}/dashboard`, {
                 method: 'GET',
                 headers: { token: localStorage.jwt }
             });

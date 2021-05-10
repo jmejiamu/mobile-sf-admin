@@ -7,6 +7,9 @@ import NavBar from './NavBar';
 import EditCloseBidDate from './EditCloseBidDate';
 import { toast } from 'react-toastify';
 import Pagination from './Pagination';
+import Endpoint from '../shared/Endpoint';
+
+const baseUrl = Endpoint.url;
 
 const Picturess = (props) => {
 
@@ -19,7 +22,7 @@ const Picturess = (props) => {
 
     const deletePictures = async (id) => {
         try {
-            const deleteData = await fetch(`http://157.245.184.202:8080/deletePictures/${id}`, {
+            const deleteData = await fetch(`${baseUrl}/deletePictures/${id}`, {
                 method: "DELETE"
             })
             const data = await deleteData.json();
@@ -33,7 +36,7 @@ const Picturess = (props) => {
 
     const getPictures = async () => {
         try {
-            const response = await fetch('http://157.245.184.202:8080/pictures')
+            const response = await fetch(`${baseUrl}/pictures`)
             const jsonData = await response.json()
             setPicturesData(jsonData);
         } catch (error) {
@@ -42,7 +45,7 @@ const Picturess = (props) => {
     };
     const getName = async () => {
         try {
-            const response = await fetch('http://157.245.184.202:8080/dashboard', {
+            const response = await fetch(`${baseUrl}/dashboard`, {
                 method: 'GET',
                 headers: { token: localStorage.jwt }
             });

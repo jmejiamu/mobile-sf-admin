@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import NavBar from '../NavBar';
 import { toast } from 'react-toastify';
+import Endpoint from '../../shared/Endpoint/Endpoint';
 
-
-
+const baseUrl = Endpoint.url;
 
 const Assistance = (props) => {
     const [assistanceData, setAssistanceData] = useState([]);
@@ -11,7 +11,7 @@ const Assistance = (props) => {
 
     const deleteAssistance = async (id) => {
         try {
-            const deleteData = await fetch(`http://157.245.184.202:8080/deleteassistance/${id}`, {
+            const deleteData = await fetch(`${baseUrl}/deleteassistance/${id}`, {
                 method: 'DELETE'
             })
             const data = await deleteData.json();
@@ -25,7 +25,7 @@ const Assistance = (props) => {
     const getData = async () => {
 
         try {
-            const response = await fetch('http://157.245.184.202:8080/assistancedata')
+            const response = await fetch(`${baseUrl}/assistancedata`)
             const jsonData = await response.json();
 
             setAssistanceData(jsonData);
@@ -38,7 +38,7 @@ const Assistance = (props) => {
 
     const getName = async () => {
         try {
-            const response = await fetch('http://157.245.184.202:8080/dashboard', {
+            const response = await fetch(`${baseUrl}/dashboard`, {
                 method: 'GET',
                 headers: { token: localStorage.jwt }
             });
