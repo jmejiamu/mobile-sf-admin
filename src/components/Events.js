@@ -55,11 +55,14 @@ const Events = (props) => {
         getName();
     }, [])
     return (
-        <div>
+        <div class="container">
             <NavBar setAuth={props.setAuth} name={name} />
             <h1 className="events-section">Events</h1>
-
-            <AddEvents />
+            
+            <div className="row" >
+              <div className="col-sm"> <AddEvents /></div>
+            </div>
+           
             {eventData.length === 0 ? <h1 className="text-center mt-5 mb-5 text-white">There is not events yet!{'😌'}</h1> : (
                 eventData.map(event => {
                     return (

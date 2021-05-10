@@ -136,10 +136,10 @@ const AddEvents = (props) => {
                 type="button"
                 className="btn btn btn-danger mb-4  mt-5 d-flex justify-content-end"
                 data-toggle="modal"
-                data-target="#addModal">
+                data-target="#addEventModal">
                 Add Event</button>
 
-            <div className="modal" id="addModal">
+            <div className="modal" id="addEventModal">
                 <div className="modal-dialog">
                     <div className="modal-content">
 

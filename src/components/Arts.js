@@ -115,12 +115,13 @@ const Arts = (props) => {
                 })
             )}
             </div>
-            </div>
+           
            
             <div className="row" >
               <div className="col-sm"><AddArts /> </div>
-            <div className="col-sm">  <EditCloseBidDate /></div></div>
-            
+                <div className="col-sm">  <EditCloseBidDate /></div>
+            </div>
+            </div>
         </div>
     )
 }
