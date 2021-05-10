@@ -90,7 +90,7 @@ const Cds = (props) => {
                                 <p><strong>User' Bid: </strong>{cd.bid}</p>
                                 <p><strong>Phone or Email:  </strong>{cd.phone_email}</p>
                                 <div className=" card-link btn-group">
-                                    <EditCd cd={cd} props={props} />
+                                    {/* <EditCd cd={cd} props={props} /> */}
 
                                 </div>
                                 {/* <AddDetails cd={cd} /> */}
@@ -105,7 +105,7 @@ const Cds = (props) => {
                     )
                 })
             )}
-            </div>
+            </div> 
             </div>
             <Pagination artPerPage={cdPerPage} totalArt={cdData.length} paginate={paginate} />
             

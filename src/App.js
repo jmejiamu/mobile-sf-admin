@@ -14,12 +14,13 @@ import Register from './components/LoginLogout/Register';
 import Arts from './components/Arts';
 import Allbids from './components/Bids/Allbids';
 import Verify from './components/LoginLogout/Verify';
+import Payment from './components/Payment';
 
 
 toast.configure()
 
-// const endpoint = 'http://localhost:3001';
-const endpoint = 'http://157.245.184.202:8080';
+const endpoint = 'http://localhost:3001';
+//const endpoint = 'http://157.245.184.202:8080';
 
 const App = () => {
 
@@ -70,6 +71,7 @@ const App = () => {
                     <Route exact path='/assistance' render={props => isAuthenticated ? <Assistance {...props} setAuth={setAuth} /> : <Redirect to="/" />} />
                     <Route exact path='/arts' render={props => isAuthenticated ? <Arts {...props} setAuth={setAuth} /> : <Redirect to="/" />} />
                     <Route exact path='/bids' render={props => isAuthenticated ? <Allbids {...props} setAuth={setAuth} /> : <Redirect to="/" />} />
+                    <Route exact path='/payment' render={props => isAuthenticated ? <Payment {...props} setAuth={setAuth} /> : <Redirect to="/" />} />
                     <Route exact path='/comfirm/:conformationId' component={Verify} />
                 </Switch>
 

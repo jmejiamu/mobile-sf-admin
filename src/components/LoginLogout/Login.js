@@ -80,10 +80,10 @@ const Login = (props) => {
 
 
                 </form>
-                <p className="text-center small text-white" >
+                {/* <p className="text-center small text-white" >
                     Dont have an account
                 <Link to="/register" className="c-style"> Sign up here!</Link>
-                </p>
+                </p> */}
             </div>
 
 

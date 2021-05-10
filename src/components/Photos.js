@@ -74,11 +74,11 @@ const Photos = (props) => {
             <h1 className="text-white">Photo Section</h1>
             {/* <AddPhotos /> */}
             {/* <EditCloseBidDate /> */}
-
+            <div class="container">  <div className="row" >
             {photoData.length === 0 ? <h1 className="text-center mt-5 mb-5 text-white">There is not Photo piece yet {'😌'} </h1> : (
                 currentPhoto.map(photo => {
                     return (
-                        <div className="card mb-5" key={photo.id}>
+                        <div className="card mb-5 col-sm" key={photo.id}>
                             <div className="card-body text-left" >
                                 <img className="card-img-top" src={photo.path} alt="user-pic" />
                                 <h5 className="card-title" >{photo.title}</h5>
@@ -104,6 +104,7 @@ const Photos = (props) => {
                     )
                 })
             )}
+            </div></div>
             <Pagination artPerPage={photoPerPage} totalArt={photoData.length} paginate={paginate} />
         </div>
     )

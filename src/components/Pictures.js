@@ -74,11 +74,11 @@ const Picturess = (props) => {
             <h1 className="text-white">Pictures Section</h1>
             {/* <AddPicturess /> */}
             {/* <EditCloseBidDate /> */}
-
+            <div class="container">  <div className="row" >
             {picturesData.length === 0 ? <h1 className="text-center mt-5 mb-5 text-white">There is not Pictures piece yet {'😌'} </h1> : (
                 currentPictures.map(pictures => {
                     return (
-                        <div className="card mb-5" key={pictures.id}>
+                        <div className="card mb-5 col-sm" key={pictures.id}>
                             <div className="card-body text-left" >
                                 <img className="card-img-top" src={pictures.path} alt="user-pic" />
                                 <h5 className="card-title" >{pictures.title}</h5>
@@ -104,6 +104,7 @@ const Picturess = (props) => {
                     )
                 })
             )}
+              </div></div>
             <Pagination artPerPage={picturesPerPage} totalArt={picturesData.length} paginate={paginate} />
         </div>
     )
