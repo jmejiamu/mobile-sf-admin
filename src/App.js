@@ -18,8 +18,8 @@ import Verify from './components/LoginLogout/Verify';
 
 toast.configure()
 
-// const endpoint = 'http://localhost:3001';
-const endpoint = 'http://157.245.184.202:8080';
+const endpoint = 'http://localhost:3001';
+//const endpoint = 'http://157.245.184.202:8080';
 
 const App = () => {
 
@@ -30,6 +30,8 @@ const App = () => {
     const setAuth = (boolean) => {
         setAuthenticated(boolean);
     }
+
+   
 
     const isAuth = async () => {
         try {
@@ -43,6 +45,7 @@ const App = () => {
             console.log('data in isAuth,', data);
 
             data === true ? setAuthenticated(true) : setAuthenticated(false)
+
         } catch (error) {
             console.error(error.message);
         }
@@ -51,6 +54,7 @@ const App = () => {
     useEffect(() => {
         isAuth();
     }, [])
+
 
     return (
         <BrowserRouter>

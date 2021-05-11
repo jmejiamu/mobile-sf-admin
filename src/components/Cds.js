@@ -8,6 +8,8 @@ import EditCloseBidDate from './EditCloseBidDate';
 import { toast } from 'react-toastify';
 import Pagination from './Pagination';
 import Endpoint from '../shared/Endpoint/Endpoint';
+import Axios from 'axios';
+import InsertContentToLog from '../shared/InsertContentToLog/InsertContentToLog';
 
 const baseUrl = Endpoint.url;
 
@@ -19,15 +21,26 @@ const Cds = (props) => {
     const [cdPerPage, setCdPerPage] = useState(4);
 
     const [currentSection, setCurrentSection] = useState(1);
+    const [username, setUsername] = useState("");
+
+    console.log("username cds,", username);
 
     const deleteCd = async (id) => {
         try {
+            console.log("delete cds!!");
+            
             const deleteData = await fetch(`${baseUrl}/deletecd/${id}`, {
                 method: "DELETE"
             })
+            
             const data = await deleteData.json();
+            console.log("data cd,", data);
             setCdData(cdData.filter(cd => cd.id !== id))
             toast.success(data.data)
+
+            InsertContentToLog.addLog(username, "Delete CD", "CD").then((data) => {
+                console.log("data,", data);
+            })
 
         } catch (error) {
             console.error(error.message);
@@ -58,9 +71,21 @@ const Cds = (props) => {
         }
     }
 
+    const getUserName = async () => {
+        try{
+            console.log(`${baseUrl}/getusername/`);
+            const username = await Axios.get(`${baseUrl}/getusername`, {headers: {'token': localStorage.jwt}});
+            console.log("username,",username);
+            setUsername(username.data.email);
+        }catch(err){
+            console.log("err,", err);
+        }
+    }
+    
     useEffect(() => {
         getCd();
         getName();
+        getUserName();
     }, [])
 
     // Get the current Cd piece
@@ -93,7 +118,7 @@ const Cds = (props) => {
                                 <p><strong>User' Bid: </strong>{cd.bid}</p>
                                 <p><strong>Phone or Email:  </strong>{cd.phone_email}</p>
                                 <div className=" card-link btn-group">
-                                    <EditCd cd={cd} props={props} />
+                                    <EditCd cd={cd} props={props} username={username}/>
 
                                 </div>
                                 {/* <AddDetails cd={cd} /> */}

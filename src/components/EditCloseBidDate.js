@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
-import Endpoint from '../shared/Endpoint';
+import Endpoint from '../shared/Endpoint/Endpoint';
 
 const baseUrl = Endpoint.url;
 

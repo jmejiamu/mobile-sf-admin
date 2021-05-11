@@ -7,7 +7,7 @@ import NavBar from './NavBar';
 import EditCloseBidDate from './EditCloseBidDate';
 import { toast } from 'react-toastify';
 import Pagination from './Pagination';
-import Endpoint from '../shared/Endpoint';
+import Endpoint from '../shared/Endpoint/Endpoint';
 
 const baseUrl = Endpoint.url;
 

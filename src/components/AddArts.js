@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import Endpoint from '../shared/Endpoint/Endpoint';
+import InsertContentToLog from '../shared/InsertContentToLog/InsertContentToLog';
 
 const baseUrl = Endpoint.url;
 
@@ -43,6 +44,9 @@ const AddArts = (props) => {
 
                 });
                 toast.success(" ✔️ New Art work added succesfully!")
+                InsertContentToLog.addLog(props.username, "Add Art work", "Art").then((data) => {
+                    console.log("data,", data);
+                })
                 window.location = '/arts'
             } catch (error) {
                 toast.warn("Fail to connect to the server")

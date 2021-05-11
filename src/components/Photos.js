@@ -7,7 +7,9 @@ import NavBar from './NavBar';
 import EditCloseBidDate from './EditCloseBidDate';
 import { toast } from 'react-toastify';
 import Pagination from './Pagination';
-import Endpoint from '../shared/Endpoint';
+import Endpoint from '../shared/Endpoint/Endpoint';
+import Axios from 'axios';
+import InsertContentToLog from '../shared/InsertContentToLog/InsertContentToLog';
 
 const baseUrl = Endpoint.url;
 
@@ -19,6 +21,7 @@ const Photos = (props) => {
     const [photoPerPage, setPhotoPerPage] = useState(4);
 
     const [currentSection, setCurrentSection] = useState(1);
+    const [username, setUsername] = useState("");
 
     const deletePhoto = async (id) => {
         try {
@@ -28,6 +31,9 @@ const Photos = (props) => {
             const data = await deleteData.json();
             setPhotoData(photoData.filter(photo => photo.id !== id))
             toast.success(data.data)
+            InsertContentToLog.addLog(username, "Delete Photo", "Photo").then((data) => {
+                console.log("data,", data);
+            })
 
         } catch (error) {
             console.error(error.message);
@@ -43,6 +49,7 @@ const Photos = (props) => {
             console.error(error.message);
         }
     };
+    
     const getName = async () => {
         try {
             const response = await fetch(`${baseUrl}/dashboard`, {
@@ -58,9 +65,22 @@ const Photos = (props) => {
         }
     }
 
+    const getUserName = async () => {
+        try{
+            console.log(`${baseUrl}/getusername/`);
+            const username = await Axios.get(`http://localhost:3001/getusername`, {headers: {'token': localStorage.jwt}});
+            console.log("username,",username);
+            setUsername(username.data.email);
+        }catch(err){
+            console.log("err,", err);
+        }
+
+    }
+
     useEffect(() => {
         getPhoto();
         getName();
+        getUserName();
     }, [])
 
     // Get the current Photo piece

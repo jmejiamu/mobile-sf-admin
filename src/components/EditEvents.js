@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Endpoint from '../shared/Endpoint/Endpoint';
+import InsertContentToLog from '../shared/InsertContentToLog/InsertContentToLog';
 
 const baseUrl = Endpoint.url;
 
@@ -29,6 +30,11 @@ const EditEvent = (props) => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(body)
             })
+
+            InsertContentToLog.addLog(props.username, "Edit Event", "Event").then((data) => {
+                console.log("data,", data);
+            })
+
         } catch (error) {
             console.error(error);
         }

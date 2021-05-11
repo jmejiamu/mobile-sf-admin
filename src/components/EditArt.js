@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import Endpoint from '../shared/Endpoint/Endpoint';
+import InsertContentToLog from '../shared/InsertContentToLog/InsertContentToLog';
 
 const baseUrl = Endpoint.url;
 
@@ -38,6 +39,11 @@ const EditArt = (props) => {
             const data = await response.json()
             if (data.data) {
                 toast.success("✔️ succesfully Updated")
+                console.log("props.username edit art,", props.username);
+                InsertContentToLog.addLog(props.username, "Edit Art work", "Art").then((data) => {
+                    console.log("data,", data);
+                })
+
             } else {
                 toast.error("❌ Error occur")
 

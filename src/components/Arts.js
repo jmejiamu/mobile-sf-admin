@@ -8,6 +8,8 @@ import EditCloseBidDate from './EditCloseBidDate';
 import { toast } from 'react-toastify';
 import Pagination from './Pagination';
 import Endpoint from '../shared/Endpoint/Endpoint';
+import Axios from 'axios';
+import InsertContentToLog from '../shared/InsertContentToLog/InsertContentToLog';
 
 const baseUrl = Endpoint.url;
 
@@ -20,6 +22,9 @@ const Arts = (props) => {
     const [name, setName] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
     const [artPerPage, setArtPerPage] = useState(4);
+    const [username, setUsername] = useState("");
+
+    console.log("art name,", username);
 
     const [currentSection, setCurrentSection] = useState(0);
 
@@ -30,6 +35,11 @@ const Arts = (props) => {
             })
             const data = await deleteData.json();
             setArtData(artData.filter(art => art.id !== id))
+            
+            InsertContentToLog.addLog(username, "Delete Art work", "Art").then((data) => {
+                console.log("data,", data);
+            })
+            
             toast.success(data.data)
 
         } catch (error) {
@@ -53,6 +63,7 @@ const Arts = (props) => {
                 headers: { token: localStorage.jwt }
             });
             const data = await response.json()
+            console.log("data name,", name);
 
             setName(data.name)
 
@@ -61,9 +72,22 @@ const Arts = (props) => {
         }
     }
 
+    const getUserName = async () => {
+        try{
+            console.log(`${baseUrl}/getusername/`);
+            const username = await Axios.get(`http://localhost:3001/getusername`, {headers: {'token': localStorage.jwt}});
+            console.log("username,",username);
+            setUsername(username.data.email);
+        }catch(err){
+            console.log("err,", err);
+        }
+
+    }
+
     useEffect(() => {
         getArt();
         getName();
+        getUserName();
     }, [])
 
     // Get the current Art piece
@@ -78,7 +102,7 @@ const Arts = (props) => {
         <div>
             <NavBar setAuth={props.setAuth} name={name} />
             <h1 className="text-white">Art Section</h1>
-            <AddArts />
+            <AddArts username={username}/>
             <EditCloseBidDate />
             
             {artData.length === 0 && currentSection == 0 ? <h1 className="text-center mt-5 mb-5 text-white">There is not art piece yet {'😌'} </h1> : (
@@ -95,10 +119,10 @@ const Arts = (props) => {
                                 <p><strong>User' Bid: </strong>{art.bid}</p>
                                 <p><strong>Phone or Email:  </strong>{art.phone_email}</p>
                                 <div className=" card-link btn-group">
-                                    <EditArt art={art} props={props} />
+                                    <EditArt art={art} props={props} username={username}/>
 
                                 </div>
-                                <AddDetails art={art} />
+                                <AddDetails art={art} username={username}/>
                                 <button
                                     type="button"
                                     className="card-link btn btn btn-danger"

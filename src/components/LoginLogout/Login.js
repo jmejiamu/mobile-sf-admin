@@ -3,8 +3,8 @@ import React, { useState, } from 'react';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 
-// const endpoint = 'http://localhost:3001';
-const endpoint = 'http://157.245.184.202:8080';
+const endpoint = 'http://localhost:3001';
+//const endpoint = 'http://157.245.184.202:8080';
 
 const Login = (props) => {
     const [email, setEmail] = useState('');

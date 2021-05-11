@@ -10,11 +10,10 @@ import Events from './Events';
 import Assistance from './Assisstance/Assistance';
 import Allbids from './Bids/Allbids';
 import NavBar from './NavBar';
-import Endpoint from '../shared/Endpoint';
+import Endpoint from '../shared/Endpoint/Endpoint';
+import { Button ,Tab ,Nav, Row, Col} from 'react-bootstrap';
 
 const baseUrl = Endpoint.url;
-
-import { Button ,Tab ,Nav, Row, Col} from 'react-bootstrap';
 
 
 const MenuItems = (props) => {
