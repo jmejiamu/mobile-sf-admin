@@ -36,7 +36,8 @@ const EditEvent = (props) => {
         <div>
             <button
                 type="button"
-                className="btn btn-danger "
+                style={{color:'black', backgroundColor: 'red'}}
+                //className="btn btn-danger "
                 data-toggle="modal"
                 data-target={`#id${props.event.id}`}>
                 Edit</button>

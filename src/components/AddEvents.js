@@ -134,7 +134,8 @@ const AddEvents = (props) => {
         <div>
             <button
                 type="button"
-                className="btn btn btn-danger mb-4  mt-5 d-flex justify-content-end"
+                style={{color:'black', backgroundColor: 'red'}}
+                //className="btn btn btn-danger mb-4  mt-5 d-flex justify-content-end"
                 data-toggle="modal"
                 data-target="#addEventModal">
                 Add Event</button>

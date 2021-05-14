@@ -5,6 +5,7 @@ import AddEvents from './AddEvents';
 import NavBar from './NavBar';
 import { toast } from 'react-toastify';
 
+
 const Events = (props) => {
     console.log('Events-props', props);
     const [eventData, setEventsData] = useState([]);
@@ -57,12 +58,13 @@ const Events = (props) => {
     return (
         <div class="container">
             <NavBar setAuth={props.setAuth} name={name} />
-            <h1 className="events-section">Events</h1>
+            <h1 className="events-section dashboard">Events</h1>
             
-            <div className="row" >
+            {/* <div className="row" >
               <div className="col-sm"> <AddEvents /></div>
-            </div>
+            </div> */}
            
+           {/* Mapping of the data , diplay each item until it is empty */}
             {eventData.length === 0 ? <h1 className="text-center mt-5 mb-5 text-white">There is not events yet!{'😌'}</h1> : (
                 eventData.map(event => {
                     return (
@@ -77,12 +79,16 @@ const Events = (props) => {
                                 <p><strong>Start Date:</strong> {event.start_date}</p>
                                 <p> <strong>End Date:</strong> {event.end_date}</p>
                                 <div className=" card-link btn-group">
+                            
+                                    <AddEvents />
                                     <EditEvent event={event} props={props} />
-                                </div>
-                                <button
+                                    <button
                                     type="button"
-                                    className="card-link btn btn btn-danger"
+                                    //className="card-link btn btn btn-danger"
+                                    style={{color:'black', backgroundColor: 'red'}}
                                     onClick={() => deleteEvents(event.id)}>Delete</button>
+                                </div>
+                               
                             </div>
                         </div>
 
