@@ -60,9 +60,6 @@ const Events = (props) => {
             <NavBar setAuth={props.setAuth} name={name} />
             <h1 className="events-section dashboard">Events</h1>
             
-            {/* <div className="row" >
-              <div className="col-sm"> <AddEvents /></div>
-            </div> */}
            
            {/* Mapping of the data , diplay each item until it is empty */}
             {eventData.length === 0 ? <h1 className="text-center mt-5 mb-5 text-white">There is not events yet!{'😌'}</h1> : (
