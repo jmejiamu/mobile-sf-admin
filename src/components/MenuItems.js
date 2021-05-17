@@ -11,6 +11,7 @@ import Assistance from './Assisstance/Assistance';
 import Allbids from './Bids/Allbids';
 import NavBar from './NavBar';
 import Endpoint from '../shared/Endpoint/Endpoint';
+import Log from './Log';
 import { Button ,Tab ,Nav, Row, Col} from 'react-bootstrap';
 
 const baseUrl = Endpoint.url;
@@ -95,6 +96,9 @@ const MenuItems = (props) => {
                     <Nav.Item>
                     <Nav.Link eventKey="eigth">Books</Nav.Link>
                     </Nav.Item>
+                    <Nav.Item>
+                    <Nav.Link eventKey="ninth">Log</Nav.Link>
+                    </Nav.Item>
                    
                 </Nav>
                 </Col>
@@ -123,6 +127,9 @@ const MenuItems = (props) => {
                     </Tab.Pane>
                     <Tab.Pane eventKey="eigth">
                     <Pictures />
+                    </Tab.Pane>
+                    <Tab.Pane eventKey="ninth">
+                    <Log />
                     </Tab.Pane>
                 </Tab.Content>
                 </Col>

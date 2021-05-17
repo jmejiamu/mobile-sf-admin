@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import Endpoint from '../shared/Endpoint/Endpoint';
+import InsertContentToLog from '../shared/InsertContentToLog/InsertContentToLog';
 
 const baseUrl = Endpoint.url;
 
@@ -36,8 +37,12 @@ const EditCd = (props) => {
             })
 
             const data = await response.json()
-            if (data.data) {
+            console.log("data,",data);
+            if (data.date) {
                 toast.success("✔️ succesfully Updated")
+                InsertContentToLog.addLog(props.username, "Edit CD", "CD").then((data) => {
+                    console.log("data,", data);
+                })
             } else {
                 toast.error("❌ Error occur")
 
@@ -46,10 +51,11 @@ const EditCd = (props) => {
         } catch (error) {
             console.error(error);
         }
-        window.location = '/Cds'
+        window.location = '/menu'
     }
 
     const onFileChange = e => {
+        console.log("e.target.files[0],",e.target.files[0]);
         if (e.target.files.length) {
             setPictureResource({
                 preview: URL.createObjectURL(e.target.files[0]),

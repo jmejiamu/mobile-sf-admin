@@ -8,6 +8,8 @@ import EditCloseBidDate from './EditCloseBidDate';
 import { toast } from 'react-toastify';
 import Pagination from './Pagination';
 import Endpoint from '../shared/Endpoint/Endpoint';
+import Axios from 'axios';
+import InsertContentToLog from '../shared/InsertContentToLog/InsertContentToLog';
 
 const baseUrl = Endpoint.url;
 
@@ -17,6 +19,7 @@ const Dvds = (props) => {
     const [name, setName] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
     const [dvdPerPage, setDvdPerPage] = useState(4);
+    const [username, setUsername] = useState("");
 
     const [currentSection, setCurrentSection] = useState(1);
 
@@ -28,6 +31,9 @@ const Dvds = (props) => {
             const data = await deleteData.json();
             setDvdData(dvdData.filter(dvd => dvd.id !== id))
             toast.success(data.data)
+            InsertContentToLog.addLog(username, "Delete DVD", "DVD").then((data) => {
+                console.log("data,", data);
+            })
 
         } catch (error) {
             console.error(error.message);
@@ -58,9 +64,21 @@ const Dvds = (props) => {
         }
     }
 
+    const getUserName = async () => {
+        try{
+            console.log(`${baseUrl}/getusername/`);
+            const username = await Axios.get(`${baseUrl}/getusername`, {headers: {'token': localStorage.jwt}});
+            console.log("username,",username);
+            setUsername(username.data.email);
+        }catch(err){
+            console.log("err,", err);
+        }
+    }
+
     useEffect(() => {
         getDvd();
         getName();
+        getUserName();
     }, [])
 
     // Get the current Dvd piece
