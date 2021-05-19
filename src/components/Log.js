@@ -10,6 +10,7 @@ const Log = (props) => {
     const [name, setName] = useState("");
     const [logEvents, setLogEvents] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
+    const [numCategory, setNumCategory] = useState([]);
     
     const itemPerPage = 4; 
     const lastIndex = itemPerPage * currentPage;
@@ -42,10 +43,20 @@ const Log = (props) => {
       }
    }
 
+   const getNumCategory = async () => {
+       try{
+        const numCategory = await Axios.get(`${baseUrl}/getCountCategory`, {headers: {'token': localStorage.jwt}});
+        setNumCategory(numCategory.data.countCategory);
+       }catch(error){
+          console.error(error.message);
+       }
+   }
+
 
 useEffect(() =>{
         getName();
         getLogEvents();
+        getNumCategory();
     }, []);
 
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
@@ -55,6 +66,22 @@ useEffect(() =>{
         <div>
         <NavBar setAuth={props.setAuth} name={name} />
         <h1 className="text-white">Log </h1>
+        <div class="container">
+            <div className="row row-cols-1 row-cols-md-2" >
+                {
+                    numCategory.map((item,i) => (
+                    <div className="mb-1 mr-2">
+                        <div className="card mb-5 col-sm bg-danger" key = {i}>
+                            <div className="card-body text-center">
+                                <h7 className="card-title">{item.Category}</h7>
+                                <p>{item.countCategory}</p>
+                            </div>
+                        </div>
+                    </div>
+                ))
+                }
+            </div>
+        </div>
         <div class="container">
             {logEvents.length === 0 ? <h1 className="text-center mt-5 mb-5 text-white">There is not Log events yet {'😌'} </h1> : (
                 currentLogEvents.map(logEvent => {
