@@ -2,15 +2,20 @@ import React, {useState, useEffect} from 'react';
 import NavBar from './NavBar';
 import Endpoint from '../shared/Endpoint/Endpoint';
 import Axios from 'axios';
+import Pagination from './Pagination';
 
 const baseUrl = Endpoint.url;
 
 const Log = (props) => {
     const [name, setName] = useState("");
     const [logEvents, setLogEvents] = useState([]);
-
-    console.log("logEvents, ",logEvents);
+    const [currentPage, setCurrentPage] = useState(1);
     
+    const itemPerPage = 4; 
+    const lastIndex = itemPerPage * currentPage;
+    const firstIndex = lastIndex - itemPerPage;
+    const currentLogEvents = logEvents.slice(firstIndex, lastIndex);
+
     const getName = async () => {
         try {
             const response = await fetch(`${baseUrl}/dashboard`, {
@@ -28,7 +33,6 @@ const Log = (props) => {
 
     const getLogEvents = async () => {
       try{
-        console.log("logs");
         const logEvents = await Axios.get(`${baseUrl}/getAllLog`, {headers: {'token': localStorage.jwt}});
         console.log("logEvents in get,",logEvents.data);
         setLogEvents(logEvents.data.allLogs);
@@ -36,15 +40,16 @@ const Log = (props) => {
     }catch(error){
           console.error(error.message);
       }
+   }
 
 
-
-    }
-
-    useEffect(() =>{
+useEffect(() =>{
         getName();
         getLogEvents();
     }, []);
+
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+   
     
     return (
         <div>
@@ -52,10 +57,9 @@ const Log = (props) => {
         <h1 className="text-white">Log </h1>
         <div class="container">
             {logEvents.length === 0 ? <h1 className="text-center mt-5 mb-5 text-white">There is not Log events yet {'😌'} </h1> : (
-                logEvents.map(logEvent => {
+                currentLogEvents.map(logEvent => {
                     return (
-                      
-                        <div className="card mb-5  col-sm" key={logEvent.id}>
+                      <div className="card mb-5  col-sm" key={logEvent.id}>
                             <div className="card-body text-left" >
                                 <h5 className="card-title" ><strong>Username: </strong>{logEvent.username}</h5>
                                 <p><strong>Log Event: </strong>{logEvent.event}</p>
@@ -68,6 +72,7 @@ const Log = (props) => {
                 })
             )}
             </div>
+            <Pagination artPerPage={itemPerPage} totalArt={logEvents.length} paginate={paginate} />
     </div>
 )
 }
