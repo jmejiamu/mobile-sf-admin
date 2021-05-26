@@ -95,11 +95,11 @@ const Dvds = (props) => {
             <h1 className="text-white">Dvd Section</h1>
             {/* <AddDvds /> */}
             {/* <EditCloseBidDate /> */}
-
+            <div class="container">  <div className="row" >
             {dvdData.length === 0 ? <h1 className="text-center mt-5 mb-5 text-white">There is not Dvd piece yet {'😌'} </h1> : (
                 currentDvd.map(dvd => {
                     return (
-                        <div className="card mb-5" key={dvd.id}>
+                        <div className="card mb-5 col-sm" key={dvd.id}>
                             <div className="card-body text-left" >
                                 <img className="card-img-top" src={dvd.path} alt="user-pic" />
                                 <h5 className="card-title" >{dvd.title}</h5>
@@ -125,7 +125,8 @@ const Dvds = (props) => {
                     )
                 })
             )}
-            <Pagination dvdPerPage={dvdPerPage} totalDvd={dvdData.length} paginate={paginate} />
+            </div></div>
+            <Pagination artPerPage={dvdPerPage} totalArt={dvdData.length} paginate={paginate} />
         </div>
     )
 }

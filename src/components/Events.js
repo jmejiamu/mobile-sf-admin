@@ -10,6 +10,7 @@ import InsertContentToLog from '../shared/InsertContentToLog/InsertContentToLog'
 
 const baseUrl = Endpoint.url;
 
+
 const Events = (props) => {
     console.log('Events-props', props);
     const [eventData, setEventsData] = useState([]);
@@ -79,11 +80,14 @@ const Events = (props) => {
         getUserName();
     }, [])
     return (
-        <div>
+        <div class="container">
             <NavBar setAuth={props.setAuth} name={name} />
-            <h1 className="events-section">Events</h1>
 
-            <AddEvents username={username}/>
+            <h1 className="events-section dashboard">Events</h1>
+            
+           
+           {/* Mapping of the data , diplay each item until it is empty */}
+
             {eventData.length === 0 ? <h1 className="text-center mt-5 mb-5 text-white">There is not events yet!{'😌'}</h1> : (
                 eventData.map(event => {
                     return (
@@ -98,12 +102,16 @@ const Events = (props) => {
                                 <p><strong>Start Date:</strong> {event.start_date}</p>
                                 <p> <strong>End Date:</strong> {event.end_date}</p>
                                 <div className=" card-link btn-group">
+                            
+                                    <AddEvents />
                                     <EditEvent event={event} props={props} username={username}/>
-                                </div>
-                                <button
+                                    <button
                                     type="button"
-                                    className="card-link btn btn btn-danger"
+                                    //className="card-link btn btn btn-danger"
+                                    style={{color:'black', backgroundColor: 'red'}}
                                     onClick={() => deleteEvents(event.id)}>Delete</button>
+                                </div>
+                               
                             </div>
                         </div>
 

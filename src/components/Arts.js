@@ -101,14 +101,22 @@ const Arts = (props) => {
     return (
         <div>
             <NavBar setAuth={props.setAuth} name={name} />
-            <h1 className="text-white">Art Section</h1>
-            <AddArts username={username}/>
-            <EditCloseBidDate />
+
             
+            <div class="container">
+            <h4 className="text-white">Art Section</h4>
+            <div className="row" >
+            <div className="col-sm">
+                <Pagination artPerPage={artPerPage} totalArt={artData.length} paginate={paginate} />
+            </div>
+            </div>
+           
+            
+               <div className="row" >
             {artData.length === 0 && currentSection == 0 ? <h1 className="text-center mt-5 mb-5 text-white">There is not art piece yet {'😌'} </h1> : (
                 currentArt.map(art => {
                     return (
-                        <div className="card mb-5" key={art.id}>
+                        <div className="card mb-5 col-sm " key={art.id}>
                             <div className="card-body text-left" >
                                 <img className="card-img-top" src={art.path} alt="user-pic" />
                                 <h5 className="card-title" >{art.title}</h5>
@@ -119,10 +127,12 @@ const Arts = (props) => {
                                 <p><strong>User' Bid: </strong>{art.bid}</p>
                                 <p><strong>Phone or Email:  </strong>{art.phone_email}</p>
                                 <div className=" card-link btn-group">
+
                                     <EditArt art={art} props={props} username={username}/>
 
                                 </div>
                                 <AddDetails art={art} username={username}/>
+
                                 <button
                                     type="button"
                                     className="card-link btn btn btn-danger"
@@ -134,7 +144,14 @@ const Arts = (props) => {
                     )
                 })
             )}
-            <Pagination artPerPage={artPerPage} totalArt={artData.length} paginate={paginate} />
+            </div>
+           
+           
+            <div className="row" >
+              <div className="col-sm"><AddArts /> </div>
+                <div className="col-sm">  <EditCloseBidDate /></div>
+            </div>
+            </div>
         </div>
     )
 }

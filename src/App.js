@@ -3,6 +3,8 @@ import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+
+
 // Components
 
 import MenuItems from './components/MenuItems';
@@ -14,6 +16,7 @@ import Register from './components/LoginLogout/Register';
 import Arts from './components/Arts';
 import Allbids from './components/Bids/Allbids';
 import Verify from './components/LoginLogout/Verify';
+import Payment from './components/Payment';
 
 
 toast.configure()
@@ -74,6 +77,7 @@ const App = () => {
                     <Route exact path='/assistance' render={props => isAuthenticated ? <Assistance {...props} setAuth={setAuth} /> : <Redirect to="/" />} />
                     <Route exact path='/arts' render={props => isAuthenticated ? <Arts {...props} setAuth={setAuth} /> : <Redirect to="/" />} />
                     <Route exact path='/bids' render={props => isAuthenticated ? <Allbids {...props} setAuth={setAuth} /> : <Redirect to="/" />} />
+                    <Route exact path='/payment' render={props => isAuthenticated ? <Payment {...props} setAuth={setAuth} /> : <Redirect to="/" />} />
                     <Route exact path='/comfirm/:conformationId' component={Verify} />
                 </Switch>
 
