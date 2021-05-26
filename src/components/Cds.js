@@ -7,6 +7,11 @@ import EditCd from './EditCd';
 import EditCloseBidDate from './EditCloseBidDate';
 import { toast } from 'react-toastify';
 import Pagination from './Pagination';
+import Endpoint from '../shared/Endpoint/Endpoint';
+import Axios from 'axios';
+import InsertContentToLog from '../shared/InsertContentToLog/InsertContentToLog';
+
+const baseUrl = Endpoint.url;
 
 const Cds = (props) => {
 
@@ -16,15 +21,26 @@ const Cds = (props) => {
     const [cdPerPage, setCdPerPage] = useState(4);
 
     const [currentSection, setCurrentSection] = useState(1);
+    const [username, setUsername] = useState("");
+
+    console.log("username cds,", username);
 
     const deleteCd = async (id) => {
         try {
-            const deleteData = await fetch(`http://157.245.184.202:8080/deletecd/${id}`, {
+            console.log("delete cds!!");
+            
+            const deleteData = await fetch(`${baseUrl}/deletecd/${id}`, {
                 method: "DELETE"
             })
+            
             const data = await deleteData.json();
+            console.log("data cd,", data);
             setCdData(cdData.filter(cd => cd.id !== id))
             toast.success(data.data)
+
+            InsertContentToLog.addLog(username, "Delete CD", "CD").then((data) => {
+                console.log("data,", data);
+            })
 
         } catch (error) {
             console.error(error.message);
@@ -33,7 +49,7 @@ const Cds = (props) => {
 
     const getCd = async () => {
         try {
-            const response = await fetch('http://157.245.184.202:8080/cds')
+            const response = await fetch(`${baseUrl}/cds`)
             const jsonData = await response.json()
             setCdData(jsonData);
         } catch (error) {
@@ -42,7 +58,7 @@ const Cds = (props) => {
     };
     const getName = async () => {
         try {
-            const response = await fetch('http://157.245.184.202:8080/dashboard', {
+            const response = await fetch(`${baseUrl}/dashboard`, {
                 method: 'GET',
                 headers: { token: localStorage.jwt }
             });
@@ -55,9 +71,21 @@ const Cds = (props) => {
         }
     }
 
+    const getUserName = async () => {
+        try{
+            console.log(`${baseUrl}/getusername/`);
+            const username = await Axios.get(`${baseUrl}/getusername`, {headers: {'token': localStorage.jwt}});
+            console.log("username,",username);
+            setUsername(username.data.email);
+        }catch(err){
+            console.log("err,", err);
+        }
+    }
+    
     useEffect(() => {
         getCd();
         getName();
+        getUserName();
     }, [])
 
     // Get the current Cd piece
@@ -90,7 +118,9 @@ const Cds = (props) => {
                                 <p><strong>User' Bid: </strong>{cd.bid}</p>
                                 <p><strong>Phone or Email:  </strong>{cd.phone_email}</p>
                                 <div className=" card-link btn-group">
-                                    {/* <EditCd cd={cd} props={props} /> */}
+
+                                    <EditCd cd={cd} props={props} username={username} />
+
 
                                 </div>
                                 {/* <AddDetails cd={cd} /> */}

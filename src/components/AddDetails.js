@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 
+import Endpoint from '../shared/Endpoint/Endpoint';
+
+const baseUrl = Endpoint.url;
+
 const AddDetails = (props) => {
     const [longDescriptionData, setLongDescriptionData] = useState();
    

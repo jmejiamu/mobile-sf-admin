@@ -6,6 +6,10 @@ import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import Moment from 'moment';
 import { getDefaultNormalizer } from '@testing-library/react';
+import Endpoint from '../shared/Endpoint/Endpoint';
+import InsertContentToLog from '../shared/InsertContentToLog/InsertContentToLog';
+
+const baseUrl = Endpoint.url;
 
 const AddEvents = (props) => {
     const [descriptionData, setDescriptionData] = useState('');
@@ -87,6 +91,7 @@ const AddEvents = (props) => {
         } else { setDurationDateError('') }
 
         if (startDate >= endDate) {
+            console.log("statDate,", startDate, endDate);
             setDurationDateError('End date cannot be before start date or the same')
             validForm = false
         }
@@ -104,6 +109,8 @@ const AddEvents = (props) => {
         // e.preventDefault();
 
         valid = formValidation(valid)
+
+        console.log('valid,', valid);
         try {
             const body = {
                 start_date: startData,
@@ -116,12 +123,16 @@ const AddEvents = (props) => {
             }
 
             if (valid === true) {
-                const response = await fetch(`http://157.245.184.202:8080/addEvent`, {
+                const response = await fetch(`${baseUrl}/addEvent`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(body)
                 })
                 toast.success(" ✔️ New Event added succesfully!")
+                InsertContentToLog.addLog(props.username, "Add Event", "Event").then((data) => {
+                    console.log("data,", data);
+                })
+
                 window.location = '/events'
             }
         } catch (error) {
@@ -152,7 +163,7 @@ const AddEvents = (props) => {
 
 
                         <div className="modal-body modal-style">
-                            <label></label>
+                            <label>Titile</label>
                             <input
                                 data-tip="Please enter the description of the event"
                                 type="text"
@@ -167,7 +178,7 @@ const AddEvents = (props) => {
                                 <span className='error' style={{ color: 'red' }}>{descriptionError}</span>}
 
 
-                            <label></label>
+                            <label>Description</label>
                             <textarea
                                 type="text"
                                 className="form-control"
@@ -178,7 +189,7 @@ const AddEvents = (props) => {
                             {noteError.length > 0 &&
                                 <span className='error' style={{ color: 'red' }}>{noteError} </span>}
 
-                            <label></label>
+                            <label>Location</label>
                             <textarea
                                 type="text"
                                 placeholder="Location"

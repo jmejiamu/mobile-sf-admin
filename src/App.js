@@ -34,6 +34,8 @@ const App = () => {
         setAuthenticated(boolean);
     }
 
+   
+
     const isAuth = async () => {
         try {
             const response = await fetch(`${endpoint}/isverify`, {
@@ -46,6 +48,7 @@ const App = () => {
             console.log('data in isAuth,', data);
 
             data === true ? setAuthenticated(true) : setAuthenticated(false)
+
         } catch (error) {
             console.error(error.message);
         }
@@ -54,6 +57,7 @@ const App = () => {
     useEffect(() => {
         isAuth();
     }, [])
+
 
     return (
         <BrowserRouter>
