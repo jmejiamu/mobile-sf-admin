@@ -11,6 +11,7 @@
     "axios": "^0.21.1",
     "bcrypt": "^5.0.0",
     "bootstrap": "^4.6.0",
+    "firebase": "^9.0.2",
     "moment": "^2.29.1",
     "moment-timezone": "^0.5.31",
     "react": "^16.13.1",

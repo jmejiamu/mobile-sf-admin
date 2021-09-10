@@ -11,7 +11,7 @@ import Endpoint from '../shared/Endpoint/Endpoint';
 import Axios from 'axios';
 import InsertContentToLog from '../shared/InsertContentToLog/InsertContentToLog';
 
-const baseUrl = Endpoint.url;
+const baseUrl = Endpoint.url; 
 
 const Arts = (props) => {
     const [artData, setArtData] = useState([]);

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { Link, Redirect } from 'react-router-dom';
-
-
+import { initializeApp } from 'firebase/app';
+//import {firebaseConfig} from './../../shared/FbContext';
+import { getAuth, onAuthStateChanged , createUserWithEmailAndPassword, signOut} from "firebase/auth";
 // const endpoint = 'http://localhost:3001';
 const endpoint = 'http://157.245.184.202:8080';
 
@@ -12,33 +13,70 @@ const Register = (props) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
+    const firebaseConfig = {
+        apiKey: "AIzaSyAkyeWX-kOq00zk-5luZmf6tgA__EFA8L4",
+    
+        authDomain: "myfirebase-a193a.firebaseapp.com",
+      
+        projectId: "myfirebase-a193a",
+      
+        storageBucket: "myfirebase-a193a.appspot.com",
+      
+        messagingSenderId: "717280678815",
+      
+        appId: "1:717280678815:web:bb93c40b8d2915bf19a3aa"
+      
+        
+          
+        };
+    
     const submitUserData = async (e) => {
         e.preventDefault();
-
+       
         try {
             const body = {
                 name: name,
                 email: email,
                 password: password
             }
-
-            const response = await fetch(`${endpoint}/register`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(body)
+            const fb = initializeApp(firebaseConfig);
+            const auth = getAuth();
+            createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+              // Signed in 
+              const uemail = userCredential.user;
+              //const uid = user.uid;
+              setEmail(uemail);
+              // ...
+              toast.success("login success");
             })
+            .catch((error) => {
+              const errorCode = error.code;
+              const errorMessage = error.message;
+               
+                toast.error(errorMessage);
+               
+            }); 
 
-            const data = await response.json()
-            console.log("data in resgister,", data.message);
+            
+        
+            // const response = await fetch(`${endpoint}/register`, {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //     },
+            //     body: JSON.stringify(body)
+            // })
 
-            if (data.message === undefined) {
-                toast.error(data);
-            } else if (data.message.length > 0) {
-                props.setIfRegister(true);
-                toast.success(data.message);
-            }
+            // const data = await response.json()
+            // console.log("data in resgister,", data.message);
+
+            // if (data.message === undefined) {
+            //     toast.error(data);
+            // } else if (data.message.length > 0) {
+            //     props.setIfRegister(true);
+            //     toast.success(data.message);
+            // }
             // if (data.token) {
             //     // document.cookie = `token=${data.token}`
             //     localStorage.setItem('jwt', data.token)
@@ -57,6 +95,7 @@ const Register = (props) => {
 
     }
 
+    
 
     return (
         <div className="login-form" >
