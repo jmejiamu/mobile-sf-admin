@@ -1,4 +1,8 @@
 import React, { useState } from 'react';
+import Endpoint from '../shared/Endpoint/Endpoint';
+import InsertContentToLog from '../shared/InsertContentToLog/InsertContentToLog';
+
+const baseUrl = Endpoint.url;
 
 const EditEvent = (props) => {
     const [descriptionData, setDescriptionData] = useState(props.event.description);
@@ -21,11 +25,16 @@ const EditEvent = (props) => {
                 end_date: endData,
             }
 
-            const response = await fetch(`http://157.245.184.202:8080/updateEvent/${props.event.id}`, {
+            const response = await fetch(`${baseUrl}/updateEvent/${props.event.id}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(body)
             })
+
+            InsertContentToLog.addLog(props.username, "Edit Event", "Event").then((data) => {
+                console.log("data,", data);
+            })
+
         } catch (error) {
             console.error(error);
         }
@@ -36,7 +45,8 @@ const EditEvent = (props) => {
         <div>
             <button
                 type="button"
-                className="btn btn-danger "
+                style={{color:'black', backgroundColor: 'red'}}
+                //className="btn btn-danger "
                 data-toggle="modal"
                 data-target={`#id${props.event.id}`}>
                 Edit</button>

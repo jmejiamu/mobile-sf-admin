@@ -25,6 +25,7 @@ const NavBar = (props) => {
 
                 <ul className="navbar-nav " >
                     <li className="nav-item"><Link className="nav-link text-white mr-sm-5" to="/">{` 💻 ${props.name}`}</Link></li>
+                    {/* <Link to="/payment" className="btn btn-outline-danger mr-sm-4 ">Payment</Link> */}
                     <Link to="/menu" className="btn btn-outline-danger mr-sm-4 ">Menu</Link>
                     <button
                         type="button"

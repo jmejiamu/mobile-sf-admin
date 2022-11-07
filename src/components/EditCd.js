@@ -5,14 +5,14 @@ import InsertContentToLog from '../shared/InsertContentToLog/InsertContentToLog'
 
 const baseUrl = Endpoint.url;
 
-const EditArt = (props) => {
-    const [title, setTitle] = useState(props.art.title);
-    const [cost, setCost] = useState(props.art.details); //cost
-    const [contact, setContact] = useState(props.art.contact); // details
-    const [currentPicturePath, setCurrentPicturePaht] = useState(props.art.path);
+const EditCd = (props) => {
+    const [title, setTitle] = useState(props.cd.title);
+    const [cost, setCost] = useState(props.cd.details); //cost
+    const [contact, setContact] = useState(props.cd.contact); // details
+    const [currentPicturePath, setCurrentPicturePaht] = useState(props.cd.path);
     const [pictureResource, setPictureResource] = useState({ preview: "", raw: "" });
 
-    const [longDescriptionData, setLongDescriptionData] = useState(props.art.long_description);
+    const [longDescriptionData, setLongDescriptionData] = useState(props.cd.long_description);
     const [authorPictureResource, setAuthorPictureResource] = useState({ preview: "", raw: "" })
 
     const updateDataEvent = async (e) => {
@@ -28,7 +28,7 @@ const EditArt = (props) => {
             formData.append("long_description", longDescriptionData)
             formData.append("author_image", authorPictureResource )
 
-            const response = await fetch(`${baseUrl}/updateart/${props.art.id}`, {
+            const response = await fetch(`${baseUrl}/updateCd/${props.cd.id}`, {
                 method: 'PUT',
                 headers: {
                     // 'Content-Type': 'application/json'
@@ -37,13 +37,12 @@ const EditArt = (props) => {
             })
 
             const data = await response.json()
-            if (data.data) {
+            console.log("data,",data);
+            if (data.date) {
                 toast.success("✔️ succesfully Updated")
-                console.log("props.username edit art,", props.username);
-                InsertContentToLog.addLog(props.username, "Edit Art work", "Art").then((data) => {
+                InsertContentToLog.addLog(props.username, "Edit CD", "CD").then((data) => {
                     console.log("data,", data);
                 })
-
             } else {
                 toast.error("❌ Error occur")
 
@@ -52,10 +51,11 @@ const EditArt = (props) => {
         } catch (error) {
             console.error(error);
         }
-        window.location = '/arts'
+        window.location = '/menu'
     }
 
     const onFileChange = e => {
+        console.log("e.target.files[0],",e.target.files[0]);
         if (e.target.files.length) {
             setPictureResource({
                 preview: URL.createObjectURL(e.target.files[0]),
@@ -70,10 +70,10 @@ const EditArt = (props) => {
                 type="button"
                 className="btn btn-danger "
                 data-toggle="modal"
-                data-target={`#id${props.art.id}`}>
+                data-target={`#id${props.cd.id}`}>
                 Edit</button>
 
-            <div className="modal" id={`id${props.art.id}`}>
+            <div className="modal" id={`id${props.cd.id}`}>
                 <div className="modal-dialog">
                     <div className="modal-content">
 
@@ -145,4 +145,4 @@ const EditArt = (props) => {
         </div>
     )
 }
-export default EditArt;
+export default EditCd;
